@@ -263,3 +263,65 @@ body {
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   }
 }
+/* ================= PARTNER JOIN CTA ================= */
+.partner-section {
+  background: #fff7d6;
+  padding: 70px 16px;
+}
+
+.partner-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.partner-text h2 {
+  color: #f4b400;
+  font-size: 32px;
+  margin-bottom: 14px;
+}
+
+.partner-text p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}
+
+.partner-points {
+  margin-top: 18px;
+}
+
+.partner-points li {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.partner-btn {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 14px 32px;
+  background: #f4b400;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.partner-btn:hover {
+  background: #ffd54f;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .partner-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .partner-text h2 {
+    font-size: 26px;
+  }
+}
