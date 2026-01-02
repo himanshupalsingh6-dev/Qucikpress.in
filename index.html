@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QuickPress – Fast Ironing Service</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
+  <!-- ✅ CSS PATH (IMPORTANT) -->
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<!-- NAVBAR -->
+<!-- ================= NAVBAR ================= -->
 <nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">QuickPress</a>
+
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="#services">Services</a>
@@ -23,64 +27,99 @@
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 <section class="hero">
-  <h1>QuickPress</h1>
-  <p>
-    <strong>Ironing that keeps up with your life.</strong><br>
-    Perfectly ironed clothes in just <b>10 minutes</b>.
-  </p>
-  <button onclick="location.href='order.html'">Order Now</button>
+  <div class="hero-content">
+    <h1>QuickPress</h1>
+    <h2>Ironing that keeps up with your life.</h2>
+    <p>
+      Perfectly ironed clothes delivered in just
+      <strong>10 minutes</strong>.
+    </p>
+
+    <a href="order.html" class="hero-btn">Order Now</a>
+  </div>
 </section>
 
-<!-- SERVICES -->
+<!-- ================= SERVICES ================= -->
 <section class="section" id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="service-card"><h3>Ironing</h3><p>Professional ironing service.</p></div>
-    <div class="service-card"><h3>Express</h3><p>10-minute quick service.</p></div>
-    <div class="service-card"><h3>Pickup</h3><p>Doorstep pickup & delivery.</p></div>
-    <div class="service-card"><h3>Partners</h3><p>Verified ironing experts.</p></div>
+  <h2 class="section-title">Our Services</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>Ironing</h3>
+      <p>Professional ironing service.</p>
+    </div>
+
+    <div class="card">
+      <h3>Express</h3>
+      <p>10-minute quick service.</p>
+    </div>
+
+    <div class="card">
+      <h3>Pickup</h3>
+      <p>Doorstep pickup & delivery.</p>
+    </div>
+
+    <div class="card">
+      <h3>Partners</h3>
+      <p>Verified ironing experts.</p>
+    </div>
   </div>
 </section>
 
-<!-- STATS -->
-<section class="section">
-  <h2>Why QuickPress?</h2>
-  <div class="stats">
-    <div class="stat-box"><h3>5000+</h3><span>Customers</span></div>
-    <div class="stat-box"><h3>1200+</h3><span>Users</span></div>
-    <div class="stat-box"><h3>150+</h3><span>Partners</span></div>
-    <div class="stat-box"><h3>10 Min</h3><span>Delivery</span></div>
+<!-- ================= WHY QUICKPRESS ================= -->
+<section class="section light">
+  <h2 class="section-title">Why QuickPress?</h2>
+
+  <div class="stats-grid">
+    <div class="stat">
+      <h3>5000+</h3>
+      <p>Customers</p>
+    </div>
+
+    <div class="stat">
+      <h3>1200+</h3>
+      <p>Users</p>
+    </div>
+
+    <div class="stat">
+      <h3>150+</h3>
+      <p>Partners</p>
+    </div>
+
+    <div class="stat">
+      <h3>10 Min</h3>
+      <p>Delivery</p>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-container">
     <div>
       <h3>QuickPress</h3>
-      <p>Fast, reliable ironing service with doorstep pickup & delivery.</p>
+      <p>
+        Fast, reliable ironing service with doorstep delivery.
+      </p>
     </div>
 
     <div>
       <h3>Contact</h3>
       <p>Email: support@quickpress.in</p>
-      <p>Phone: +91 9258730561</p>
+      <p>Phone: 9258730561</p>
     </div>
 
     <div>
       <h3>Support</h3>
-      <a href="#">Help Center</a><br>
-      <a href="#">Privacy Policy</a><br>
-      <a href="#">Terms & Conditions</a>
+      <p>Help Center</p>
+      <p>Terms & Privacy</p>
     </div>
 
     <div>
       <h3>WhatsApp</h3>
-      <a href="https://wa.me/919997874502" target="_blank">
-        Chat with us on WhatsApp
-      </a>
+      <p>Chat with us on WhatsApp</p>
     </div>
   </div>
 
@@ -89,9 +128,7 @@
   </div>
 </footer>
 
-<!-- MOBILE STICKY BUTTON -->
-<a href="order.html" class="mobile-order-btn">Order Now</a>
-
+<!-- ================= SCRIPT ================= -->
 <script>
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
