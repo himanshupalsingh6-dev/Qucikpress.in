@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Join QuickPress – Partner or Delivery</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .join-hero {
+      background: #f4b400;
+      padding: 70px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .join-hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .join-hero p {
+      font-size: 16px;
+    }
+
+    .join-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 60px 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .join-card {
+      border: 1px solid #e6e6e6;
+      border-radius: 12px;
+      padding: 30px;
+      background: #ffffff;
+    }
+
+    .join-card h2 {
+      color: #f4b400;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .join-card input,
+    .join-card select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 14px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .join-card button {
+      width: 100%;
+      padding: 14px;
+      background: #f4b400;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .join-card button:hover {
+      background: #ffd54f;
+    }
+
+    @media (max-width: 768px) {
+      .join-container {
+        grid-template-columns: 1fr;
+      }
+
+      .join-hero h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">QuickPress</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="join.html">Join Us</a>
+      <a href="login.html">Login</a>
+      <a href="order.html" class="nav-btn">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="join-hero">
+  <h1>Join QuickPress</h1>
+  <p>Partner ya Delivery Boy ke roop me hamare saath kaam kijiye</p>
+</section>
+
+<!-- FORMS -->
+<section class="join-container">
+
+  <!-- PARTNER FORM -->
+  <div class="join-card">
+    <h2>Become an Ironing Partner</h2>
+
+    <input type="text" placeholder="Full Name">
+    <input type="tel" placeholder="Mobile Number">
+    <input type="text" placeholder="Shop / Area Name">
+    <input type="text" placeholder="City">
+    <select>
+      <option>Ironing Partner</option>
+      <option>Laundry + Ironing</option>
+    </select>
+
+    <button>Submit Partner Request</button>
+  </div>
+
+  <!-- DELIVERY BOY FORM -->
+  <div class="join-card">
+    <h2>Become a Delivery Boy</h2>
+
+    <input type="text" placeholder="Full Name">
+    <input type="tel" placeholder="Mobile Number">
+    <input type="text" placeholder="Vehicle Type (Bike / Cycle)">
+    <input type="text" placeholder="City">
+    <select>
+      <option>Full Time</option>
+      <option>Part Time</option>
+    </select>
+
+    <button>Submit Delivery Request</button>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>QuickPress</h3>
+      <p>Fast ironing & delivery service.</p>
+    </div>
+    <div>
+      <h3>Support</h3>
+      <p>Email: support@quickpress.in</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 QuickPress. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>
