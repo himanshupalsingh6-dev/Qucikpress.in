@@ -5,74 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ===== HERO SECTION (YELLOW + WHITE ONLY) ===== */
-    .hero {
-      background: #f4b400;
-      padding: 110px 20px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      margin-bottom: 18px;
-      color: #ffffff;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      max-width: 820px;
-      margin: auto;
-      color: #ffffff;
-      line-height: 1.7;
-      font-weight: 500;
-    }
-
-    .hero button {
-      margin-top: 35px;
-      padding: 14px 38px;
-      background: #ffffff;
-      color: #000000;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .hero button:hover {
-      background: #fff3c4;
-    }
-
-    /* ===== REMOVE ANY DARK BACKGROUND FROM BODY ===== */
-    body {
-      background: #ffffff;
-      color: #222;
-    }
-  </style>
 </head>
 <body>
 
-<!-- ================= HERO SECTION ================= -->
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">QuickPress</a>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="#services">Services</a>
+      <a href="login.html">Login</a>
+      <a href="order.html" class="nav-btn">Order Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
 <section class="hero">
   <h1>QuickPress</h1>
   <p>
-    <strong>Ironing that keeps up with your life.</strong><br><br>
+    <strong>Ironing that keeps up with your life.</strong><br>
     Get perfectly ironed clothes in just <b>10 minutes</b><br>
-    with trusted local ironing partners near you.
+    with trusted local ironing partners.
   </p>
-
-  <button onclick="location.href='login.html'">
+  <button onclick="location.href='order.html'">
     Order Now
   </button>
 </section>
 
-<!-- ================= SERVICES SECTION ================= -->
-<section class="section">
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
   <h2>Our Services</h2>
 
   <div class="services">
@@ -98,7 +65,7 @@
   </div>
 </section>
 
-<!-- ================= STATS SECTION ================= -->
+<!-- ================= STATS ================= -->
 <section class="section">
   <h2>Why QuickPress?</h2>
 
@@ -124,6 +91,13 @@
     </div>
   </div>
 </section>
+
+<!-- ================= NAVBAR SCRIPT ================= -->
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+</script>
 
 </body>
 </html>
