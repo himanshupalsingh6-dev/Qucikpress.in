@@ -49,3 +49,36 @@
       });
   };
 </script>
+<script type="module">
+  import { auth, db } from "./firebase.js";
+  import { createUserWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  import { doc, setDoc } 
+  from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+  window.signup = function () {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    if (!name || !email || !password) {
+      alert("All fields required");
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => {
+        await setDoc(doc(db, "users", userCredential.user.uid), {
+          name: name,
+          email: email,
+          role: "customer"
+        });
+
+        alert("Signup Successful ✅");
+        window.location.href = "login.html";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+</script>
