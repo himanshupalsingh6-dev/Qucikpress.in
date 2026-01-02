@@ -19,11 +19,15 @@
 </p>
 
 <script type="module">
-  import { auth } from "./firebase.js";
+  // 🔹 Firebase imports
+  import { auth, db } from "./firebase.js";
   import { signInWithEmailAndPassword }
     from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  import { doc, getDoc }
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-  window.login = function () {
+  // 🔐 LOGIN FUNCTION
+  window.login = async function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
@@ -32,14 +36,34 @@
       return;
     }
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        alert("Login Successful ✅");
-        window.location.href = "order.html"; // next page
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    try {
+      // 1️⃣ Firebase Authentication login
+      const userCredential =
+        await signInWithEmailAndPassword(auth, email, password);
+
+      const user = userCredential.user;
+
+      // 2️⃣ Firestore se role check
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      if (!userSnap.exists()) {
+        alert("User data Firestore me nahi mila");
+        return;
+      }
+
+      const role = userSnap.data().role;
+
+      // 3️⃣ Role ke hisaab se redirect
+      if (role === "admin") {
+        window.location.href = "admin/admin.html";
+      } else {
+        window.location.href = "order.html";
+      }
+
+    } catch (error) {
+      alert(error.message);
+    }
   };
 </script>
 
