@@ -1,13 +1,119 @@
-body {
-  font-family: Arial;
-  text-align: center;
-  background: #fff7e6;
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f7fb;
+  color: #333;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 420px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* ===== INPUTS ===== */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #ff5252;
+}
+
+/* ===== BUTTON ===== */
 button {
-  padding: 15px 30px;
-  font-size: 18px;
-  background: orange;
+  width: 100%;
+  padding: 12px;
+  background: #ff5252;
+  color: white;
   border: none;
+  border-radius: 5px;
+  font-size: 15px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #e64545;
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #ff5252;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== TABLE (ADMIN PANEL) ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #fff;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+th {
+  background: #ff5252;
+  color: #fff;
+}
+
+select {
+  padding: 6px;
+}
+
+/* ===== ADMIN PAGE WIDTH ===== */
+.admin-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* ===== STATUS MESSAGE ===== */
+#msg {
+  margin-top: 15px;
+  color: green;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .container, .admin-container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  table {
+    font-size: 12px;
+  }
 }
