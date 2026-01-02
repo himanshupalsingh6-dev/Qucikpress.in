@@ -1,1 +1,13 @@
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #fff7e6;
+}
 
+button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background: orange;
+  border: none;
+  cursor: pointer;
+}
