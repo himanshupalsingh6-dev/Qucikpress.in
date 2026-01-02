@@ -1,15 +1,15 @@
 /* =================================================
    QUICKPRESS – FINAL STABLE CSS
-   Brand: Yellow + White
+   Brand: Yellow + White + Black Footer
 ================================================= */
 
 :root {
   --primary-yellow: #f4b400;
-  --light-yellow: #fff4cc;
-  --text-dark: #222222;
-  --text-muted: #666666;
+  --text-dark: #222;
+  --text-muted: #bbbbbb;
   --border-light: #e6e6e6;
   --card-bg: #f9f9f9;
+  --footer-bg: #000000;
 }
 
 /* RESET */
@@ -67,10 +67,6 @@ body {
   font-weight: 500;
 }
 
-.nav-links a:hover {
-  color: var(--primary-yellow);
-}
-
 .nav-btn {
   background: var(--primary-yellow);
   padding: 8px 16px;
@@ -87,31 +83,27 @@ body {
 }
 
 .hero h1 {
-  font-size: 38px;
+  font-size: 36px;
   color: #ffffff;
-  margin-bottom: 12px;
 }
 
 .hero p {
   font-size: 16px;
   color: #ffffff;
   max-width: 700px;
-  margin: auto;
-  line-height: 1.6;
+  margin: 14px auto;
 }
 
 .hero button {
-  margin-top: 24px;
-  padding: 14px 32px;
+  margin-top: 22px;
+  padding: 14px 30px;
   background: #ffffff;
   border: none;
   border-radius: 6px;
-  font-size: 15px;
   font-weight: bold;
-  cursor: pointer;
 }
 
-/* ================= COMMON SECTION ================= */
+/* ================= SECTION ================= */
 .section {
   max-width: 1200px;
   margin: auto;
@@ -141,12 +133,6 @@ body {
 
 .service-card h3 {
   color: var(--primary-yellow);
-  margin-bottom: 8px;
-}
-
-.service-card p {
-  color: var(--text-muted);
-  font-size: 14px;
 }
 
 /* ================= STATS ================= */
@@ -169,24 +155,18 @@ body {
   color: var(--primary-yellow);
 }
 
-.stat-box span {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-
-/* ================= FOOTER ================= */
+/* ================= FOOTER (BLACK) ================= */
 .footer {
-  background: #fafafa;
-  border-top: 1px solid var(--border-light);
-  padding: 40px 16px;
+  background: var(--footer-bg);
+  padding: 45px 16px;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 28px;
 }
 
 .footer h3 {
@@ -207,10 +187,12 @@ body {
 }
 
 .footer-bottom {
+  margin-top: 28px;
   text-align: center;
-  margin-top: 24px;
   font-size: 13px;
-  color: var(--text-muted);
+  color: #888;
+  border-top: 1px solid #222;
+  padding-top: 18px;
 }
 
 /* ================= MOBILE STICKY BUTTON ================= */
@@ -233,7 +215,6 @@ body {
     background: #ffffff;
     flex-direction: column;
     display: none;
-    border-bottom: 1px solid var(--border-light);
   }
 
   .nav-links a {
@@ -246,13 +227,23 @@ body {
   }
 
   .hero h1 {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .hero p {
     font-size: 14px;
   }
 
+  /* Mobile footer spacing */
+  .footer {
+    padding: 35px 16px;
+  }
+
+  .footer-container {
+    gap: 20px;
+  }
+
+  /* Sticky Order Button */
   .mobile-order-btn {
     display: block;
     position: fixed;
@@ -269,6 +260,6 @@ body {
     border-radius: 10px;
     text-decoration: none;
     z-index: 999;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   }
 }
