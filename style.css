@@ -1,7 +1,6 @@
 /* =================================================
    QUICKPRESS – FINAL STABLE CSS
    Brand: Yellow + White
-   Mobile + Desktop Friendly
 ================================================= */
 
 :root {
@@ -13,7 +12,7 @@
   --card-bg: #f9f9f9;
 }
 
-/* ===== RESET ===== */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -26,9 +25,7 @@ body {
   color: var(--text-dark);
 }
 
-/* =================================================
-   NAVBAR
-================================================= */
+/* ================= NAVBAR ================= */
 .navbar {
   position: sticky;
   top: 0;
@@ -59,7 +56,6 @@ body {
   cursor: pointer;
 }
 
-/* Desktop links */
 .nav-links {
   display: flex;
   gap: 22px;
@@ -83,9 +79,7 @@ body {
   font-weight: bold;
 }
 
-/* =================================================
-   HERO SECTION
-================================================= */
+/* ================= HERO ================= */
 .hero {
   background: var(--primary-yellow);
   padding: 80px 20px;
@@ -110,7 +104,6 @@ body {
   margin-top: 24px;
   padding: 14px 32px;
   background: #ffffff;
-  color: var(--text-dark);
   border: none;
   border-radius: 6px;
   font-size: 15px;
@@ -118,9 +111,7 @@ body {
   cursor: pointer;
 }
 
-/* =================================================
-   COMMON SECTIONS
-================================================= */
+/* ================= COMMON SECTION ================= */
 .section {
   max-width: 1200px;
   margin: auto;
@@ -133,9 +124,7 @@ body {
   margin-bottom: 32px;
 }
 
-/* =================================================
-   SERVICES
-================================================= */
+/* ================= SERVICES ================= */
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -160,9 +149,7 @@ body {
   font-size: 14px;
 }
 
-/* =================================================
-   STATS / WHY QUICKPRESS
-================================================= */
+/* ================= STATS ================= */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -180,7 +167,6 @@ body {
 .stat-box h3 {
   font-size: 30px;
   color: var(--primary-yellow);
-  margin-bottom: 4px;
 }
 
 .stat-box span {
@@ -188,19 +174,53 @@ body {
   color: var(--text-muted);
 }
 
-/* =================================================
-   MOBILE STICKY ORDER BUTTON
-================================================= */
+/* ================= FOOTER ================= */
+.footer {
+  background: #fafafa;
+  border-top: 1px solid var(--border-light);
+  padding: 40px 16px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.footer h3 {
+  color: var(--primary-yellow);
+  margin-bottom: 12px;
+}
+
+.footer p,
+.footer a {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.footer a:hover {
+  color: var(--primary-yellow);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* ================= MOBILE STICKY BUTTON ================= */
 .mobile-order-btn {
   display: none;
 }
 
-/* =================================================
-   MOBILE VIEW
-================================================= */
+/* ================= MOBILE ================= */
 @media (max-width: 768px) {
 
-  /* Navbar */
   .menu-toggle {
     display: block;
   }
@@ -225,7 +245,6 @@ body {
     display: flex;
   }
 
-  /* Hero */
   .hero h1 {
     font-size: 30px;
   }
@@ -234,7 +253,6 @@ body {
     font-size: 14px;
   }
 
-  /* Sticky Button */
   .mobile-order-btn {
     display: block;
     position: fixed;
