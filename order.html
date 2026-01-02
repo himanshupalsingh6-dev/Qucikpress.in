@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Place Order – QuickPress</title>
+  <meta charset="UTF-8">
+</head>
+<body>
 
+<h2>Place Your Order</h2>
+
+<input type="text" id="address" placeholder="Pickup Address"><br><br>
+
+<select id="service">
+  <option value="">Select Service</option>
+  <option value="Ironing">Ironing</option>
+  <option value="Express Ironing">Express Ironing (10 min)</option>
+</select><br><br>
+
+<input type="number" id="quantity" placeholder="Number of Clothes"><br><br>
+
+<button onclick="placeOrder()">Place Order</button>
+
+<p id="msg"></p>
+
+<script type="module">
+  import { auth, db } from "./firebase.js";
+  import { onAuthStateChanged } 
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  import { collection, addDoc, serverTimestamp } 
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+  // 🔐 Check login
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      alert("Please login first");
+      window.location.href = "login.html";
+    }
+  });
+
+  window.placeOrder = async function () {
+    const address = document.getElementById("address").value;
+    const service = document.getElementById("service").value;
+    const quantity = document.getElementById("quantity").value;
+
+    if (!address || !service || !quantity) {
+      alert("All fields required");
+      return;
+    }
+
+    const user = auth.currentUser;
+
+    try {
+      await addDoc(collection(db, "orders"), {
+        customerId: user.uid,
+        address: address,
+        service: service,
+        quantity: quantity,
+        status: "placed",
+        createdAt: serverTimestamp()
+      });
+
+      document.getElementById("msg").innerText =
+        "✅ Order placed successfully";
+
+      // Optional: clear form
+      document.getElementById("address").value = "";
+      document.getElementById("service").value = "";
+      document.getElementById("quantity").value = "";
+
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+</script>
+
+</body>
+</html>
