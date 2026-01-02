@@ -8,88 +8,7 @@
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="logo">QuickPress</a>
-
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <div class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="#services">Services</a>
-      <a href="login.html">Login</a>
-      <a href="order.html" class="nav-btn">Order Now</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1>QuickPress</h1>
-  <p>
-    <strong>Ironing that keeps up with your life.</strong><br>
-    Get perfectly ironed clothes in just <b>10 minutes</b><br>
-    with trusted local ironing partners.
-  </p>
-  <button onclick="location.href='order.html'">Order Now</button>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section class="section" id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <h3>Professional Ironing</h3>
-      <p>Premium per-cloth ironing.</p>
-    </div>
-    <div class="service-card">
-      <h3>Express 10-Min</h3>
-      <p>Urgent ironing service.</p>
-    </div>
-    <div class="service-card">
-      <h3>Doorstep Pickup</h3>
-      <p>Pickup & delivery at home.</p>
-    </div>
-    <div class="service-card">
-      <h3>Verified Partners</h3>
-      <p>Trusted ironing experts.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= STATS ================= -->
-<section class="section">
-  <h2>Why QuickPress?</h2>
-  <div class="stats">
-    <div class="stat-box"><h3>5,000+</h3><span>Customers</span></div>
-    <div class="stat-box"><h3>1,200+</h3><span>Users</span></div>
-    <div class="stat-box"><h3>150+</h3><span>Partners</span></div>
-    <div class="stat-box"><h3>10 Min</h3><span>Delivery</span></div>
-  </div>
-</section>
-
-<!-- 🔥 MOBILE STICKY BUTTON -->
-<a href="order.html" class="mobile-order-btn">
-  Order Now
-</a>
-
-<script>
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
-  }
-</script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>QuickPress – Fast Ironing Service</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- ================= NAVBAR ================= -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
     <a href="index.html" class="logo">QuickPress</a>
@@ -104,63 +23,47 @@
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section class="hero">
   <h1>QuickPress</h1>
   <p>
     <strong>Ironing that keeps up with your life.</strong><br>
-    Get perfectly ironed clothes in just <b>10 minutes</b><br>
-    with trusted local ironing partners.
+    Perfectly ironed clothes in just <b>10 minutes</b>.
   </p>
   <button onclick="location.href='order.html'">Order Now</button>
 </section>
 
-<!-- ================= SERVICES ================= -->
+<!-- SERVICES -->
 <section class="section" id="services">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="service-card"><h3>Professional Ironing</h3><p>Premium per-cloth ironing.</p></div>
-    <div class="service-card"><h3>Express 10-Min</h3><p>Urgent ironing service.</p></div>
-    <div class="service-card"><h3>Doorstep Pickup</h3><p>Pickup & delivery at home.</p></div>
-    <div class="service-card"><h3>Verified Partners</h3><p>Trusted ironing experts.</p></div>
+    <div class="service-card"><h3>Ironing</h3><p>Professional ironing.</p></div>
+    <div class="service-card"><h3>Express</h3><p>10-minute service.</p></div>
+    <div class="service-card"><h3>Pickup</h3><p>Doorstep pickup.</p></div>
+    <div class="service-card"><h3>Partners</h3><p>Verified experts.</p></div>
   </div>
 </section>
 
-<!-- ================= STATS ================= -->
+<!-- STATS -->
 <section class="section">
   <h2>Why QuickPress?</h2>
-
   <div class="stats">
-    <div class="stat-box">
-      <h3 class="counter" data-target="5000">0</h3>
-      <span>Targeted Customers</span>
-    </div>
-    <div class="stat-box">
-      <h3 class="counter" data-target="1200">0</h3>
-      <span>Total Users</span>
-    </div>
-    <div class="stat-box">
-      <h3 class="counter" data-target="150">0</h3>
-      <span>Ironing Partners</span>
-    </div>
-    <div class="stat-box">
-      <h3 class="counter" data-target="10">0</h3>
-      <span>Minute Express</span>
-    </div>
+    <div class="stat-box"><h3 class="counter" data-target="5000">0</h3><span>Customers</span></div>
+    <div class="stat-box"><h3 class="counter" data-target="1200">0</h3><span>Users</span></div>
+    <div class="stat-box"><h3 class="counter" data-target="150">0</h3><span>Partners</span></div>
+    <div class="stat-box"><h3 class="counter" data-target="10">0</h3><span>Minutes</span></div>
   </div>
 </section>
 
-<!-- 🔥 MOBILE STICKY ORDER BUTTON -->
+<!-- MOBILE STICKY BUTTON -->
 <a href="order.html" class="mobile-order-btn">Order Now</a>
 
-<!-- ================= SCRIPTS ================= -->
+<!-- JS -->
 <script>
-  // Mobile menu
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
   }
 
-  // Animated counters
   const counters = document.querySelectorAll(".counter");
   let started = false;
 
@@ -169,13 +72,11 @@
     started = true;
 
     counters.forEach(counter => {
-      const target = +counter.getAttribute("data-target");
+      const target = +counter.dataset.target;
       let count = 0;
-      const speed = 200;
 
       const update = () => {
-        const inc = Math.ceil(target / speed);
-        count += inc;
+        count += Math.ceil(target / 150);
         if (count < target) {
           counter.innerText = count;
           requestAnimationFrame(update);
@@ -187,11 +88,9 @@
     });
   }
 
-  // Trigger when stats visible
   window.addEventListener("scroll", () => {
-    const statsSection = document.querySelector(".stats");
-    const pos = statsSection.getBoundingClientRect().top;
-    if (pos < window.innerHeight - 100) {
+    const stats = document.querySelector(".stats");
+    if (stats.getBoundingClientRect().top < window.innerHeight - 100) {
       runCounters();
     }
   });
