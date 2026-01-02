@@ -13,7 +13,6 @@
   <div class="nav-container">
     <a href="index.html" class="logo">QuickPress</a>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="#services">Services</a>
@@ -37,10 +36,10 @@
 <section class="section" id="services">
   <h2>Our Services</h2>
   <div class="services">
-    <div class="service-card"><h3>Ironing</h3><p>Professional ironing.</p></div>
-    <div class="service-card"><h3>Express</h3><p>10-minute service.</p></div>
-    <div class="service-card"><h3>Pickup</h3><p>Doorstep pickup.</p></div>
-    <div class="service-card"><h3>Partners</h3><p>Verified experts.</p></div>
+    <div class="service-card"><h3>Ironing</h3><p>Professional ironing service.</p></div>
+    <div class="service-card"><h3>Express</h3><p>10-minute quick service.</p></div>
+    <div class="service-card"><h3>Pickup</h3><p>Doorstep pickup & delivery.</p></div>
+    <div class="service-card"><h3>Partners</h3><p>Verified ironing experts.</p></div>
   </div>
 </section>
 
@@ -48,52 +47,55 @@
 <section class="section">
   <h2>Why QuickPress?</h2>
   <div class="stats">
-    <div class="stat-box"><h3 class="counter" data-target="5000">0</h3><span>Customers</span></div>
-    <div class="stat-box"><h3 class="counter" data-target="1200">0</h3><span>Users</span></div>
-    <div class="stat-box"><h3 class="counter" data-target="150">0</h3><span>Partners</span></div>
-    <div class="stat-box"><h3 class="counter" data-target="10">0</h3><span>Minutes</span></div>
+    <div class="stat-box"><h3>5000+</h3><span>Customers</span></div>
+    <div class="stat-box"><h3>1200+</h3><span>Users</span></div>
+    <div class="stat-box"><h3>150+</h3><span>Partners</span></div>
+    <div class="stat-box"><h3>10 Min</h3><span>Delivery</span></div>
   </div>
 </section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-container">
+    <div>
+      <h3>QuickPress</h3>
+      <p>Fast, reliable ironing service with doorstep pickup & delivery.</p>
+    </div>
+
+    <div>
+      <h3>Contact</h3>
+      <p>Email: support@quickpress.in</p>
+      <p>Phone: +91 9XXXXXXXXX</p>
+    </div>
+
+    <div>
+      <h3>Support</h3>
+      <a href="#">Help Center</a><br>
+      <a href="#">Privacy Policy</a><br>
+      <a href="#">Terms & Conditions</a>
+    </div>
+
+    <div>
+      <h3>WhatsApp</h3>
+      <a href="https://wa.me/919XXXXXXXXX" target="_blank">
+        Chat with us on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 QuickPress. All rights reserved.
+  </div>
+</footer>
 
 <!-- MOBILE STICKY BUTTON -->
 <a href="order.html" class="mobile-order-btn">Order Now</a>
 
-<!-- JS -->
+<!-- SCRIPT -->
 <script>
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
   }
-
-  const counters = document.querySelectorAll(".counter");
-  let started = false;
-
-  function runCounters() {
-    if (started) return;
-    started = true;
-
-    counters.forEach(counter => {
-      const target = +counter.dataset.target;
-      let count = 0;
-
-      const update = () => {
-        count += Math.ceil(target / 150);
-        if (count < target) {
-          counter.innerText = count;
-          requestAnimationFrame(update);
-        } else {
-          counter.innerText = target + "+";
-        }
-      };
-      update();
-    });
-  }
-
-  window.addEventListener("scroll", () => {
-    const stats = document.querySelector(".stats");
-    if (stats.getBoundingClientRect().top < window.innerHeight - 100) {
-      runCounters();
-    }
-  });
 </script>
 
 </body>
