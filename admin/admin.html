@@ -14,7 +14,7 @@
       <th>Order ID</th>
       <th>Address</th>
       <th>Service</th>
-      <th>Qty</th>
+      <th>Quantity</th>
       <th>Status</th>
       <th>Update</th>
     </tr>
@@ -23,71 +23,68 @@
 </table>
 
 <script type="module">
-  import { auth, db } from "./firebase.js";
-  import { onAuthStateChanged } 
+  // 🔹 Firebase imports
+  import { auth, db } from "../firebase.js";
+  import { onAuthStateChanged }
     from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-  import { collection, getDocs, doc, updateDoc }
+  import { doc, getDoc, collection, getDocs, updateDoc }
     from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
-  // 🔐 Check admin login
+  // 🔐 AUTH + ROLE CHECK
   onAuthStateChanged(auth, async (user) => {
     if (!user) {
-      window.location.href = "login.html";
+      alert("Please login first");
+      window.location.href = "../login.html";
       return;
     }
 
-    // Check role
-    const userSnap = await getDocs(collection(db, "users"));
-    let isAdmin = false;
+    // 🔴 Check role from Firestore
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
 
-    userSnap.forEach(d => {
-      if (d.id === user.uid && d.data().role === "admin") {
-        isAdmin = true;
-      }
-    });
-
-    if (!isAdmin) {
-      alert("Access denied");
-      window.location.href = "order.html";
+    if (!userSnap.exists() || userSnap.data().role !== "admin") {
+      alert("Access denied ❌ (Admin only)");
+      window.location.href = "../order.html";
       return;
     }
 
+    // ✅ Only admin reaches here
     loadOrders();
   });
 
+  // 📦 Load all orders
   async function loadOrders() {
     const table = document.getElementById("ordersTable");
     table.innerHTML = "";
 
-    const querySnap = await getDocs(collection(db, "orders"));
+    const ordersSnap = await getDocs(collection(db, "orders"));
 
-    querySnap.forEach(docSnap => {
-      const o = docSnap.data();
+    ordersSnap.forEach((d) => {
+      const o = d.data();
 
       table.innerHTML += `
         <tr>
-          <td>${docSnap.id}</td>
+          <td>${d.id}</td>
           <td>${o.address}</td>
           <td>${o.service}</td>
           <td>${o.quantity}</td>
           <td>
-            <select id="status-${docSnap.id}">
-              <option ${o.status=="placed"?"selected":""}>placed</option>
-              <option ${o.status=="picked"?"selected":""}>picked</option>
-              <option ${o.status=="ironed"?"selected":""}>ironed</option>
-              <option ${o.status=="delivered"?"selected":""}>delivered</option>
+            <select id="status-${d.id}">
+              <option ${o.status === "placed" ? "selected" : ""}>placed</option>
+              <option ${o.status === "picked" ? "selected" : ""}>picked</option>
+              <option ${o.status === "ironed" ? "selected" : ""}>ironed</option>
+              <option ${o.status === "delivered" ? "selected" : ""}>delivered</option>
             </select>
           </td>
           <td>
-            <button onclick="updateStatus('${docSnap.id}')">
-              Update
-            </button>
+            <button onclick="updateStatus('${d.id}')">Update</button>
           </td>
         </tr>
       `;
     });
   }
 
+  // 🔄 Update order status
   window.updateStatus = async function (orderId) {
     const newStatus =
       document.getElementById(`status-${orderId}`).value;
