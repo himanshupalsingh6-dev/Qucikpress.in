@@ -1,6 +1,6 @@
 /* ===============================
    QUICKPRESS – BRAND THEME
-   Yellow + White (No Red)
+   Yellow + White
 ================================ */
 
 :root {
@@ -23,6 +23,60 @@ body {
   color: var(--dark-text);
 }
 
+/* ================= NAVBAR ================= */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary-yellow);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--dark-text);
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--primary-yellow);
+}
+
+.nav-btn {
+  background: var(--primary-yellow);
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: #000;
+  font-weight: bold;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
 /* ================= HERO ================= */
 .hero {
   background: var(--primary-yellow);
@@ -33,31 +87,24 @@ body {
 .hero h1 {
   font-size: 42px;
   color: #ffffff;
-  margin-bottom: 15px;
 }
 
 .hero p {
   font-size: 18px;
   max-width: 780px;
-  margin: auto;
+  margin: 18px auto;
   color: #ffffff;
   line-height: 1.6;
 }
 
 .hero button {
-  margin-top: 30px;
+  margin-top: 25px;
   padding: 14px 34px;
   background: #ffffff;
-  color: var(--dark-text);
   border: none;
   border-radius: 6px;
-  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.hero button:hover {
-  background: var(--light-yellow);
 }
 
 /* ================= SECTIONS ================= */
@@ -69,9 +116,8 @@ body {
 
 .section h2 {
   text-align: center;
-  margin-bottom: 40px;
   color: var(--primary-yellow);
-  font-size: 28px;
+  margin-bottom: 40px;
 }
 
 /* ================= SERVICES ================= */
@@ -87,26 +133,13 @@ body {
   border-radius: 14px;
   text-align: center;
   border: 1px solid var(--border-light);
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-
-.service-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 .service-card h3 {
   color: var(--primary-yellow);
-  margin-bottom: 10px;
 }
 
-.service-card p {
-  color: var(--muted-text);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-/* ================= STATS (WHY QUICKPRESS) ================= */
+/* ================= STATS ================= */
 .stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -122,99 +155,18 @@ body {
 }
 
 .stat-box h3 {
-  font-size: 34px;
   color: var(--primary-yellow);
-  margin-bottom: 6px;
+  font-size: 34px;
 }
 
-.stat-box span {
-  font-size: 14px;
-  color: var(--muted-text);
-}
-
-/* ================= MOBILE FRIENDLY ================= */
-@media (max-width: 768px) {
-
-  .hero {
-    padding: 70px 16px;
-  }
-
-  .hero h1 {
-    font-size: 30px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .section {
-    padding: 45px 16px;
-  }
-
-  .section h2 {
-    font-size: 24px;
-  }
-}
-/* ================= NAVBAR ================= */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.logo {
-  font-size: 22px;
-  font-weight: bold;
-  color: #f4b400;
-  text-decoration: none;
-}
-
-/* Links */
-.nav-links {
-  display: flex;
-  gap: 22px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #222;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.nav-links a:hover {
-  color: #f4b400;
-}
-
-/* Order Button */
-.nav-btn {
-  background: #f4b400;
-  color: #000;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: bold;
-}
-
-/* Hamburger */
-.menu-toggle {
+/* ================= MOBILE STICKY BUTTON ================= */
+.mobile-order-btn {
   display: none;
-  font-size: 22px;
-  cursor: pointer;
 }
 
 /* ================= MOBILE ================= */
 @media (max-width: 768px) {
+
   .menu-toggle {
     display: block;
   }
@@ -226,17 +178,30 @@ body {
     right: 0;
     background: #ffffff;
     flex-direction: column;
-    gap: 0;
     display: none;
-    border-bottom: 1px solid #e6e6e6;
-  }
-
-  .nav-links a {
-    padding: 14px 20px;
-    border-top: 1px solid #f0f0f0;
   }
 
   .nav-links.show {
     display: flex;
+  }
+
+  /* 🔥 STICKY ORDER BUTTON */
+  .mobile-order-btn {
+    display: block;
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 16px;
+    background: var(--primary-yellow);
+    color: #000;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 999;
   }
 }
