@@ -22,12 +22,47 @@
   </div>
 </nav>
 
+<!-- CONTACT MANAGER -->
+<section class="section">
+  <div style="
+    background:#fff7d6;
+    border:1px solid #f4b400;
+    padding:24px;
+    border-radius:12px;
+    text-align:center;
+    margin-bottom:40px;
+  ">
+    <h3 style="margin-bottom:10px;color:#222;">
+      Partner ya Delivery ke liye direct contact karein
+    </h3>
+
+    <p style="margin-bottom:14px;color:#555;font-size:14px;">
+      Agar aap ironing partner ya delivery boy banna chahte hain,
+      to niche diye gaye number par call karein.
+    </p>
+
+    <a href="tel:9258730561"
+       style="
+         display:inline-block;
+         background:#f4b400;
+         color:#000;
+         padding:14px 26px;
+         border-radius:8px;
+         font-weight:bold;
+         text-decoration:none;
+         font-size:15px;
+       ">
+       📞 Manager Call: 9258730561
+    </a>
+  </div>
+</section>
+
 <!-- PARTNER FORM -->
 <section class="section">
-  <h2>Become a QuickPress Partner</h2>
+  <h2>Partner Details Form</h2>
 
   <input id="p_name" type="text" placeholder="Full Name">
-  <input id="p_mobile" type="text" placeholder="Mobile Number">
+  <input id="p_mobile" type="tel" placeholder="Mobile Number">
   <input id="p_area" type="text" placeholder="Shop / Area">
   <input id="p_city" type="text" placeholder="City">
 
@@ -41,11 +76,11 @@
 
 <!-- DELIVERY FORM -->
 <section class="section">
-  <h2>Become a Delivery Boy</h2>
+  <h2>Delivery Boy Details Form</h2>
 
   <input id="d_name" type="text" placeholder="Full Name">
-  <input id="d_mobile" type="text" placeholder="Mobile Number">
-  <input id="d_vehicle" type="text" placeholder="Vehicle (Bike/Cycle)">
+  <input id="d_mobile" type="tel" placeholder="Mobile Number">
+  <input id="d_vehicle" type="text" placeholder="Vehicle (Bike / Cycle)">
   <input id="d_city" type="text" placeholder="City">
 
   <button onclick="submitDelivery()">Submit Delivery Request</button>
@@ -53,18 +88,19 @@
 
 <!-- SCRIPT -->
 <script>
-  // 🔗 Yaha par aapka Script URL hai:
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz74V4xaVKG8LTcnTOqVjyMpBihMqFKLRDQZ7tU9L1gkMQlbSRe-fJdUt_2N8duSt2f/exec";
+  // 🔗 Google Apps Script URL (SAME AS BEFORE)
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbz74V4xaVKG8LTcnTOqVjyMpBihMqFKLRDQZ7tU9L1gkMQlbSRe-fJdUt_2N8duSt2f/exec";
 
   function submitPartner() {
-    const name = document.getElementById("p_name").value.trim();
-    const mobile = document.getElementById("p_mobile").value.trim();
-    const area = document.getElementById("p_area").value.trim();
-    const city = document.getElementById("p_city").value.trim();
-    const partnerType = document.getElementById("p_type").value;
+    const name = p_name.value.trim();
+    const mobile = p_mobile.value.trim();
+    const area = p_area.value.trim();
+    const city = p_city.value.trim();
+    const partnerType = p_type.value;
 
     if (!name || !mobile || !area || !city) {
-      alert("Please fill all partner fields.");
+      alert("Please fill all partner details");
       return;
     }
 
@@ -72,36 +108,31 @@
       method: "POST",
       body: JSON.stringify({
         type: "partner",
-        name: name,
-        mobile: mobile,
-        area: area,
-        city: city,
-        partnerType: partnerType
+        name,
+        mobile,
+        area,
+        city,
+        partnerType
       })
     })
-    .then(response => response.text())
     .then(() => {
-      alert("Partner request submitted successfully!");
-      // Clear fields after submit
-      document.getElementById("p_name").value = "";
-      document.getElementById("p_mobile").value = "";
-      document.getElementById("p_area").value = "";
-      document.getElementById("p_city").value = "";
+      alert("Partner request submitted successfully");
+      p_name.value = "";
+      p_mobile.value = "";
+      p_area.value = "";
+      p_city.value = "";
     })
-    .catch(err => {
-      console.error(err);
-      alert("Error submitting partner request.");
-    });
+    .catch(() => alert("Error submitting partner request"));
   }
 
   function submitDelivery() {
-    const name = document.getElementById("d_name").value.trim();
-    const mobile = document.getElementById("d_mobile").value.trim();
-    const vehicle = document.getElementById("d_vehicle").value.trim();
-    const city = document.getElementById("d_city").value.trim();
+    const name = d_name.value.trim();
+    const mobile = d_mobile.value.trim();
+    const vehicle = d_vehicle.value.trim();
+    const city = d_city.value.trim();
 
     if (!name || !mobile || !vehicle || !city) {
-      alert("Please fill all delivery fields.");
+      alert("Please fill all delivery details");
       return;
     }
 
@@ -109,28 +140,22 @@
       method: "POST",
       body: JSON.stringify({
         type: "delivery",
-        name: name,
-        mobile: mobile,
-        vehicle: vehicle,
-        city: city
+        name,
+        mobile,
+        vehicle,
+        city
       })
     })
-    .then(response => response.text())
     .then(() => {
-      alert("Delivery request submitted successfully!");
-      // Clear fields after submit
-      document.getElementById("d_name").value = "";
-      document.getElementById("d_mobile").value = "";
-      document.getElementById("d_vehicle").value = "";
-      document.getElementById("d_city").value = "";
+      alert("Delivery request submitted successfully");
+      d_name.value = "";
+      d_mobile.value = "";
+      d_vehicle.value = "";
+      d_city.value = "";
     })
-    .catch(err => {
-      console.error(err);
-      alert("Error submitting delivery request.");
-    });
+    .catch(() => alert("Error submitting delivery request"));
   }
 
-  // Mobile navbar toggle
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
   }
