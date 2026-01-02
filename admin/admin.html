@@ -1,1 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Panel – QuickPress</title>
+  <meta charset="UTF-8">
+</head>
+<body>
 
+<h2>Admin Panel – Orders</h2>
+
+<table border="1" cellpadding="10">
+  <thead>
+    <tr>
+      <th>Order ID</th>
+      <th>Address</th>
+      <th>Service</th>
+      <th>Qty</th>
+      <th>Status</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+  <tbody id="ordersTable"></tbody>
+</table>
+
+<script type="module">
+  import { auth, db } from "./firebase.js";
+  import { onAuthStateChanged } 
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  import { collection, getDocs, doc, updateDoc }
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+
+  // 🔐 Check admin login
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) {
+      window.location.href = "login.html";
+      return;
+    }
+
+    // Check role
+    const userSnap = await getDocs(collection(db, "users"));
+    let isAdmin = false;
+
+    userSnap.forEach(d => {
+      if (d.id === user.uid && d.data().role === "admin") {
+        isAdmin = true;
+      }
+    });
+
+    if (!isAdmin) {
+      alert("Access denied");
+      window.location.href = "order.html";
+      return;
+    }
+
+    loadOrders();
+  });
+
+  async function loadOrders() {
+    const table = document.getElementById("ordersTable");
+    table.innerHTML = "";
+
+    const querySnap = await getDocs(collection(db, "orders"));
+
+    querySnap.forEach(docSnap => {
+      const o = docSnap.data();
+
+      table.innerHTML += `
+        <tr>
+          <td>${docSnap.id}</td>
+          <td>${o.address}</td>
+          <td>${o.service}</td>
+          <td>${o.quantity}</td>
+          <td>
+            <select id="status-${docSnap.id}">
+              <option ${o.status=="placed"?"selected":""}>placed</option>
+              <option ${o.status=="picked"?"selected":""}>picked</option>
+              <option ${o.status=="ironed"?"selected":""}>ironed</option>
+              <option ${o.status=="delivered"?"selected":""}>delivered</option>
+            </select>
+          </td>
+          <td>
+            <button onclick="updateStatus('${docSnap.id}')">
+              Update
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+  }
+
+  window.updateStatus = async function (orderId) {
+    const newStatus =
+      document.getElementById(`status-${orderId}`).value;
+
+    await updateDoc(doc(db, "orders", orderId), {
+      status: newStatus
+    });
+
+    alert("Status updated ✅");
+  };
+</script>
+
+</body>
+</html>
