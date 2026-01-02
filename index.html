@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>QuickPress – Fast Ironing Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- ✅ CSS PATH (IMPORTANT) -->
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ================= NAVBAR ================= -->
+<!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">QuickPress</a>
+    <div class="logo">QuickPress</div>
 
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
@@ -22,30 +22,24 @@
       <a href="#services">Services</a>
       <a href="join.html">Join Us</a>
       <a href="login.html">Login</a>
-      <a href="order.html" class="nav-btn">Order Now</a>
+      <a href="order.html" class="order-btn">Order Now</a>
     </div>
   </div>
 </nav>
 
-<!-- ================= HERO ================= -->
+<!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="hero-content">
-    <h1>QuickPress</h1>
-    <h2>Ironing that keeps up with your life.</h2>
-    <p>
-      Perfectly ironed clothes delivered in just
-      <strong>10 minutes</strong>.
-    </p>
-
-    <a href="order.html" class="hero-btn">Order Now</a>
-  </div>
+  <h1>QuickPress</h1>
+  <h2>Ironing that keeps up with your life</h2>
+  <p>Perfectly ironed clothes delivered in just <b>10 minutes</b>.</p>
+  <a href="order.html" class="hero-btn">Order Now</a>
 </section>
 
-<!-- ================= SERVICES ================= -->
+<!-- ===== SERVICES ===== -->
 <section class="section" id="services">
   <h2 class="section-title">Our Services</h2>
 
-  <div class="card-grid">
+  <div class="cards">
     <div class="card">
       <h3>Ironing</h3>
       <p>Professional ironing service.</p>
@@ -68,11 +62,11 @@
   </div>
 </section>
 
-<!-- ================= WHY QUICKPRESS ================= -->
+<!-- ===== WHY QUICKPRESS ===== -->
 <section class="section light">
   <h2 class="section-title">Why QuickPress?</h2>
 
-  <div class="stats-grid">
+  <div class="stats">
     <div class="stat">
       <h3>5000+</h3>
       <p>Customers</p>
@@ -95,31 +89,29 @@
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
-  <div class="footer-container">
+  <div class="footer-grid">
     <div>
-      <h3>QuickPress</h3>
-      <p>
-        Fast, reliable ironing service with doorstep delivery.
-      </p>
+      <h4>QuickPress</h4>
+      <p>Fast & reliable ironing service.</p>
     </div>
 
     <div>
-      <h3>Contact</h3>
-      <p>Email: support@quickpress.in</p>
-      <p>Phone: 9258730561</p>
+      <h4>Contact</h4>
+      <p>📞 9258730561</p>
+      <p>📧 support@quickpress.in</p>
     </div>
 
     <div>
-      <h3>Support</h3>
+      <h4>Support</h4>
       <p>Help Center</p>
-      <p>Terms & Privacy</p>
+      <p>Privacy Policy</p>
     </div>
 
     <div>
-      <h3>WhatsApp</h3>
-      <p>Chat with us on WhatsApp</p>
+      <h4>WhatsApp</h4>
+      <p>Chat with us</p>
     </div>
   </div>
 
@@ -128,7 +120,7 @@
   </div>
 </footer>
 
-<!-- ================= SCRIPT ================= -->
+<!-- JS -->
 <script>
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
