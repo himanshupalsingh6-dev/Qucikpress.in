@@ -9,7 +9,6 @@
   <link rel="stylesheet" href="../style.css" />
 
   <style>
-    /* Fallback styling */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -18,16 +17,11 @@
 
     .admin-wrapper {
       max-width: 1200px;
-      margin: 30px auto;
-      padding: 20px;
-      background: #ffffff;
+      margin: 20px auto;
+      padding: 16px;
+      background: #fff;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .admin-title {
-      margin-bottom: 15px;
-      color: #333;
     }
 
     iframe {
@@ -37,41 +31,31 @@
       border-radius: 8px;
       background: #fff;
     }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .tabs button {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      background: #f4b400;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .tabs button:hover {
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
 
-<!-- ADMIN NAVBAR -->
-<nav class="navbar">
-  <div class="nav-container">
-    <div class="logo">QuickPress Admin</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <div class="nav-links" id="navLinks">
-      <a href="../index.html">Home</a>
-      <a href="admin.html">Admin</a>
-      <a href="../order.html" class="nav-btn">Orders</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ADMIN CONTENT -->
-<div class="admin-wrapper">
-  <h2 class="admin-title">Partner & Delivery Requests (Google Sheet)</h2>
-
-  <!-- GOOGLE SHEET IFRAME -->
-  <iframe
-    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRXP8ak4GPy1y2a1oCMt-j_9XMvI9FP-Sehzr2N5gKL5WPGA-kb6Ygzox3K7vVTsFHXQmbswr-x6kLz/pubhtml?gid=0&single=true&widget=true&headers=false">
-  </iframe>
-</div>
-
-<!-- NAV TOGGLE -->
-<script>
-  function toggleMenu() {
-    document.getElementById("navLinks").classList.toggle("show");
-  }
-</script>
-<!-- ADMIN PASSWORD LOCK -->
+<!-- 🔐 ADMIN PASSWORD LOCK -->
 <div id="lockScreen" style="
   position:fixed;
   top:0; left:0;
@@ -91,62 +75,109 @@
     max-width:360px;
     text-align:center;
   ">
-    <h2 style="margin-bottom:10px;">Admin Login</h2>
-    <p style="font-size:14px; color:#ccc; margin-bottom:15px;">
-      Authorized access only
-    </p>
+    <h2>Admin Login</h2>
+    <p style="font-size:14px;color:#ccc;">Authorized access only</p>
 
     <input
       id="adminPass"
       type="password"
       placeholder="Enter admin password"
-      style="
-        width:100%;
-        padding:12px;
-        border-radius:6px;
-        border:none;
-        margin-bottom:12px;
-      "
+      style="width:100%;padding:12px;border-radius:6px;border:none;margin:12px 0;"
     >
 
     <button
       onclick="unlockAdmin()"
-      style="
-        width:100%;
-        padding:12px;
-        background:#f4b400;
-        color:#000;
-        border:none;
-        border-radius:6px;
-        font-weight:bold;
-        cursor:pointer;
-      "
+      style="width:100%;padding:12px;background:#f4b400;border:none;border-radius:6px;font-weight:bold;"
     >
       Login
     </button>
 
-    <p id="errorMsg" style="
-      margin-top:10px;
-      color:#ff6b6b;
-      display:none;
-      font-size:13px;
-    ">
+    <p id="errorMsg" style="color:#ff6b6b;display:none;margin-top:10px;">
       ❌ Wrong password
     </p>
   </div>
 </div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="logo">QuickPress Admin</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html">Home</a>
+      <a href="admin.html">Admin</a>
+      <a href="../order.html" class="nav-btn">Orders</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ADMIN DASHBOARD -->
+<div class="admin-wrapper">
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button onclick="showTab('orders')">Orders</button>
+    <button onclick="showTab('partners')">Partners</button>
+    <button onclick="showTab('delivery')">Delivery</button>
+  </div>
+
+  <!-- ORDERS TAB -->
+  <div id="tab-orders">
+    <h3>Orders</h3>
+    <!-- 🔽 Yahan aapka EXISTING Firebase Orders table rahega -->
+    <p>Orders table yahan show hoti hai.</p>
+  </div>
+
+  <!-- PARTNERS TAB -->
+  <div id="tab-partners" style="display:none;">
+    <h3>Partner Requests</h3>
+
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRXP8ak4GPy1y2a1oCMt-j_9XMvI9FP-Sehzr2N5gKL5WPGA-kb6Ygzox3K7vVTsFHXQmbswr-x6kLz/pubhtml?gid=0&single=true&widget=true&headers=false">
+    </iframe>
+  </div>
+
+  <!-- DELIVERY TAB -->
+  <div id="tab-delivery" style="display:none;">
+    <h3>Delivery Requests</h3>
+
+    <!-- Abhi same sheet hai, baad me alag karenge -->
+    <iframe
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRXP8ak4GPy1y2a1oCMt-j_9XMvI9FP-Sehzr2N5gKL5WPGA-kb6Ygzox3K7vVTsFHXQmbswr-x6kLz/pubhtml?gid=0&single=true&widget=true&headers=false">
+    </iframe>
+  </div>
+
+</div>
+
+<!-- SCRIPTS -->
 <script>
-  const ADMIN_PASSWORD = "quickpress123"; // 👈 yahan password change kar sakte ho
+  /* 🔐 ADMIN PASSWORD */
+  const ADMIN_PASSWORD = "quickpress123"; // 👈 yahan change kar sakte ho
 
   function unlockAdmin() {
     const pass = document.getElementById("adminPass").value;
-
     if (pass === ADMIN_PASSWORD) {
       document.getElementById("lockScreen").style.display = "none";
     } else {
       document.getElementById("errorMsg").style.display = "block";
     }
   }
+
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("show");
+  }
+
+  function showTab(tab) {
+    document.getElementById("tab-orders").style.display = "none";
+    document.getElementById("tab-partners").style.display = "none";
+    document.getElementById("tab-delivery").style.display = "none";
+
+    document.getElementById("tab-" + tab).style.display = "block";
+  }
+
+  // Default tab
+  showTab("orders");
 </script>
 
 </body>
