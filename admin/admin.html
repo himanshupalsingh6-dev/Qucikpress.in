@@ -135,6 +135,19 @@
     </p>
   </div>
 </div>
+<script>
+  const ADMIN_PASSWORD = "quickpress123"; // 👈 yahan password change kar sakte ho
+
+  function unlockAdmin() {
+    const pass = document.getElementById("adminPass").value;
+
+    if (pass === ADMIN_PASSWORD) {
+      document.getElementById("lockScreen").style.display = "none";
+    } else {
+      document.getElementById("errorMsg").style.display = "block";
+    }
+  }
+</script>
 
 </body>
 </html>
