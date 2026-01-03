@@ -5,8 +5,8 @@
   <title>QuickPress – Ironing & Laundry</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -21,7 +21,7 @@
       color: #111;
     }
 
-    /* HEADER */
+    /* ================= HEADER ================= */
     header {
       background: #fff;
       padding: 14px 24px;
@@ -43,6 +43,7 @@
     .location {
       font-size: 13px;
       color: #444;
+      line-height: 1.2;
     }
 
     .search {
@@ -65,7 +66,7 @@
       cursor: pointer;
     }
 
-    /* HERO */
+    /* ================= HERO ================= */
     .hero {
       background: linear-gradient(90deg, #22c55e, #16a34a);
       margin: 24px;
@@ -73,7 +74,6 @@
       padding: 40px;
       color: #fff;
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
 
@@ -98,12 +98,19 @@
       cursor: pointer;
     }
 
+    /* ================= SECTIONS ================= */
+    .section-title {
+      margin: 32px 24px 14px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
     /* PROMO CARDS */
     .promo {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 18px;
-      padding: 0 24px;
+      padding: 0 24px 20px;
     }
 
     .promo-card {
@@ -123,27 +130,11 @@
       color: #555;
     }
 
-    .promo-card button {
-      margin-top: 14px;
-      padding: 8px 16px;
-      border-radius: 8px;
-      border: none;
-      background: #111;
-      color: #fff;
-      cursor: pointer;
-    }
-
     /* CATEGORIES */
-    .section-title {
-      margin: 28px 24px 14px;
-      font-size: 20px;
-      font-weight: 700;
-    }
-
     .categories {
       display: flex;
       gap: 16px;
-      padding: 0 24px;
+      padding: 0 24px 20px;
       overflow-x: auto;
     }
 
@@ -155,16 +146,8 @@
       text-align: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.06);
       cursor: pointer;
-    }
-
-    .category img {
-      width: 40px;
-      margin-bottom: 6px;
-    }
-
-    .category span {
-      font-size: 13px;
       font-weight: 600;
+      font-size: 13px;
     }
 
     /* PRODUCTS */
@@ -204,6 +187,31 @@
       cursor: pointer;
     }
 
+    /* CTA */
+    .cta {
+      margin: 24px;
+      border-radius: 18px;
+      padding: 36px;
+      background: linear-gradient(90deg,#fde047,#facc15);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .cta button {
+      margin-top: 12px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      background: #111;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
     /* FOOTER */
     footer {
       background: #fff;
@@ -217,9 +225,13 @@
 </head>
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
   <div class="logo">QuickPress</div>
-  <div class="location">⚡ Delivery in 10 minutes<br>Kasganj, UP</div>
+  <div class="location">
+    ⚡ Delivery in 10 minutes<br>
+    Kasganj, UP
+  </div>
   <div class="search">
     <input type="text" placeholder="Search shirt, pant, saree ironing…" />
   </div>
@@ -227,6 +239,7 @@
   <div class="header-btn">Cart</div>
 </header>
 
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div>
     <h1>Ironing in 10 Minutes</h1>
@@ -235,36 +248,34 @@
   </div>
 </section>
 
+<!-- ================= PROMO ================= -->
 <section class="promo">
   <div class="promo-card">
-    <h3>Ironing at your doorstep</h3>
+    <h3>🧺 Ironing at your doorstep</h3>
     <p>Professional pressing service</p>
-    <button>Order Now</button>
   </div>
-
   <div class="promo-card">
-    <h3>Express 10-Min Delivery</h3>
-    <p>Fastest ironing service</p>
-    <button>Order Now</button>
+    <h3>🚀 Express 10-Min Delivery</h3>
+    <p>Fastest ironing in your city</p>
   </div>
-
   <div class="promo-card">
-    <h3>Dry Cleaning</h3>
+    <h3>🧼 Dry Cleaning</h3>
     <p>Premium fabric care</p>
-    <button>Order Now</button>
   </div>
 </section>
 
+<!-- ================= CATEGORIES ================= -->
 <div class="section-title">Categories</div>
 <section class="categories">
-  <div class="category"><span>👕 Shirt</span></div>
-  <div class="category"><span>👖 Pant</span></div>
-  <div class="category"><span>🥻 Saree</span></div>
-  <div class="category"><span>🧥 Woolen</span></div>
-  <div class="category"><span>🧼 Dry Clean</span></div>
-  <div class="category"><span>⚡ Express</span></div>
+  <div class="category">👕 Shirt</div>
+  <div class="category">👖 Pant</div>
+  <div class="category">🥻 Saree</div>
+  <div class="category">🧥 Woolen</div>
+  <div class="category">🧼 Dry Clean</div>
+  <div class="category">⚡ Express</div>
 </section>
 
+<!-- ================= PRODUCTS ================= -->
 <div class="section-title">Popular Services</div>
 <section class="products">
   <div class="product">
@@ -272,19 +283,16 @@
     <div class="price">₹10</div>
     <button class="add-btn">ADD</button>
   </div>
-
   <div class="product">
     <h4>Pant Ironing</h4>
     <div class="price">₹12</div>
     <button class="add-btn">ADD</button>
   </div>
-
   <div class="product">
     <h4>Saree Ironing</h4>
     <div class="price">₹30</div>
     <button class="add-btn">ADD</button>
   </div>
-
   <div class="product">
     <h4>Woolen Ironing</h4>
     <div class="price">₹25</div>
@@ -292,6 +300,52 @@
   </div>
 </section>
 
+<!-- ================= HOW IT WORKS ================= -->
+<div class="section-title">How QuickPress Works</div>
+<section class="promo">
+  <div class="promo-card">
+    <h3>📝 Place Order</h3>
+    <p>Select clothes & service</p>
+  </div>
+  <div class="promo-card">
+    <h3>🚚 Pickup</h3>
+    <p>Partner picks from doorstep</p>
+  </div>
+  <div class="promo-card">
+    <h3>🧺 Ironing</h3>
+    <p>Clean & professional pressing</p>
+  </div>
+  <div class="promo-card">
+    <h3>🏠 Delivery</h3>
+    <p>Delivered within minutes</p>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<div class="section-title">Why QuickPress?</div>
+<section class="promo">
+  <div class="promo-card">
+    <h3>⚡ Super Fast</h3>
+    <p>10-minute express service</p>
+  </div>
+  <div class="promo-card">
+    <h3>💰 Affordable</h3>
+    <p>Pay per cloth pricing</p>
+  </div>
+  <div class="promo-card">
+    <h3>✅ Trusted Partners</h3>
+    <p>Verified ironing professionals</p>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <h2>Now Live in Kasganj 🚀</h2>
+  <p>Ironing & Laundry at your doorstep</p>
+  <button>Order Now</button>
+</section>
+
+<!-- ================= FOOTER ================= -->
 <footer>
   © 2026 QuickPress • Ironing & Laundry Service
 </footer>
