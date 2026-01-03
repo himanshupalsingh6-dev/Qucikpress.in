@@ -71,6 +71,70 @@
     document.getElementById("navLinks").classList.toggle("show");
   }
 </script>
+<!-- ADMIN PASSWORD LOCK -->
+<div id="lockScreen" style="
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+">
+  <div style="
+    background:#222;
+    padding:30px;
+    border-radius:12px;
+    width:90%;
+    max-width:360px;
+    text-align:center;
+  ">
+    <h2 style="margin-bottom:10px;">Admin Login</h2>
+    <p style="font-size:14px; color:#ccc; margin-bottom:15px;">
+      Authorized access only
+    </p>
+
+    <input
+      id="adminPass"
+      type="password"
+      placeholder="Enter admin password"
+      style="
+        width:100%;
+        padding:12px;
+        border-radius:6px;
+        border:none;
+        margin-bottom:12px;
+      "
+    >
+
+    <button
+      onclick="unlockAdmin()"
+      style="
+        width:100%;
+        padding:12px;
+        background:#f4b400;
+        color:#000;
+        border:none;
+        border-radius:6px;
+        font-weight:bold;
+        cursor:pointer;
+      "
+    >
+      Login
+    </button>
+
+    <p id="errorMsg" style="
+      margin-top:10px;
+      color:#ff6b6b;
+      display:none;
+      font-size:13px;
+    ">
+      ❌ Wrong password
+    </p>
+  </div>
+</div>
 
 </body>
 </html>
