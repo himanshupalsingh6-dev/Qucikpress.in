@@ -1,76 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Place Order – QuickPress</title>
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
+<title>My Orders – QuickPress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f6f7f8;
+}
+.box{
+  max-width:700px;
+  margin:20px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+}
+input{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #ccc;
+  margin-bottom:10px;
+}
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background:#f4b400;
+  font-weight:bold;
+  cursor:pointer;
+}
+.order{
+  border:1px solid #eee;
+  padding:12px;
+  border-radius:10px;
+  margin-top:12px;
+}
+.status{
+  font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
-<h2>Place Your Order</h2>
+<div class="box">
+  <h2>My Orders</h2>
 
-<input type="text" id="address" placeholder="Pickup Address"><br><br>
+  <input id="mobile" placeholder="Enter your mobile number">
+  <button onclick="loadOrders()">View Orders</button>
 
-<select id="service">
-  <option value="">Select Service</option>
-  <option value="Ironing">Ironing</option>
-  <option value="Express Ironing">Express Ironing (10 min)</option>
-</select><br><br>
+  <div id="result"></div>
+</div>
 
-<input type="number" id="quantity" placeholder="Number of Clothes"><br><br>
+<script>
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzRKy_rqBNYB37IPVTXVhjEVquUFVU6yTIU3WtCbGkd7Zwr1Pe1AsHy4ylp36uElw6X0w/exec";
 
-<button onclick="placeOrder()">Place Order</button>
+function loadOrders(){
+  const mobile = document.getElementById("mobile").value.trim();
+  if (!mobile) {
+    alert("Please enter mobile number");
+    return;
+  }
 
-<p id="msg"></p>
+  fetch(SCRIPT_URL + "?mobile=" + mobile)
+    .then(res => res.json())
+    .then(data => {
+      const box = document.getElementById("result");
+      box.innerHTML = "";
 
-<script type="module">
-  import { auth, db } from "./firebase.js";
-  import { onAuthStateChanged } 
-    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-  import { collection, addDoc, serverTimestamp } 
-    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+      if (!data.orders || data.orders.length === 0) {
+        box.innerHTML = "<p>No orders found.</p>";
+        return;
+      }
 
-  // 🔐 Check login
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      alert("Please login first");
-      window.location.href = "login.html";
-    }
-  });
-
-  window.placeOrder = async function () {
-    const address = document.getElementById("address").value;
-    const service = document.getElementById("service").value;
-    const quantity = document.getElementById("quantity").value;
-
-    if (!address || !service || !quantity) {
-      alert("All fields required");
-      return;
-    }
-
-    const user = auth.currentUser;
-
-    try {
-      await addDoc(collection(db, "orders"), {
-        customerId: user.uid,
-        address: address,
-        service: service,
-        quantity: quantity,
-        status: "placed",
-        createdAt: serverTimestamp()
+      data.orders.forEach(o => {
+        const div = document.createElement("div");
+        div.className = "order";
+        div.innerHTML = `
+          <p><b>Order ID:</b> ${o.OrderId || o.OrderID}</p>
+          <p><b>Total:</b> ₹${o.Total}</p>
+          <p class="status"><b>Status:</b> ${o.Status}</p>
+          <p><b>Date:</b> ${o.Date}</p>
+        `;
+        box.appendChild(div);
       });
-
-      document.getElementById("msg").innerText =
-        "✅ Order placed successfully";
-
-      // Optional: clear form
-      document.getElementById("address").value = "";
-      document.getElementById("service").value = "";
-      document.getElementById("quantity").value = "";
-
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+    })
+    .catch(() => {
+      alert("Failed to load orders");
+    });
+}
 </script>
 
 </body>
