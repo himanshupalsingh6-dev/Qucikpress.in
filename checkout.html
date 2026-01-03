@@ -11,7 +11,6 @@ body{margin:0;font-family:Arial;background:#f6f7f8}
   max-width:500px;margin:20px auto;
   background:#fff;padding:20px;border-radius:14px
 }
-h2{text-align:center}
 input,textarea{
   width:100%;padding:12px;margin:8px 0;
   border-radius:8px;border:1px solid #ccc
@@ -41,17 +40,14 @@ input,textarea{
   <input id="mobile" placeholder="Mobile Number">
   <textarea id="address" placeholder="Full Delivery Address"></textarea>
 
-  <p>
-    📍 <a href="https://maps.google.com" target="_blank">
-    Choose location on Google Maps</a>
-  </p>
-
   <p><b>Payment:</b> Cash on Delivery</p>
 
   <button class="btn" onclick="placeOrder()">Place Order</button>
 </div>
 
 <script>
+const SCRIPT_URL = https://script.google.com/macros/s/AKfycbzRKy_rqBNYB37IPVTXVhjEVquUFVU6yTIU3WtCbGkd7Zwr1Pe1AsHy4ylp36uElw6X0w/exec;
+
 const total = localStorage.getItem("total") || 0;
 document.getElementById("total").innerText = total;
 
@@ -65,10 +61,25 @@ function placeOrder(){
     return;
   }
 
-  alert("✅ Order placed successfully!");
-
-  localStorage.removeItem("total");
-  window.location.href="index.html";
+  fetch(SCRIPT_URL,{
+    method:"POST",
+    body:JSON.stringify({
+      name:name,
+      mobile:mobile,
+      address:address,
+      total:total,
+      payment:"COD"
+    })
+  })
+  .then(res=>res.json())
+  .then(data=>{
+    alert("✅ Order placed successfully!\nOrder ID: "+data.orderId);
+    localStorage.removeItem("total");
+    window.location.href="index.html";
+  })
+  .catch(()=>{
+    alert("❌ Order failed. Try again.");
+  });
 }
 </script>
 
