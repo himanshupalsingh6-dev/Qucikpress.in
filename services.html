@@ -180,13 +180,16 @@ h2{margin-top:0}
 </div>
 
 <script>
-let total = Number(localStorage.getItem("total")) || 0;
-document.getElementById("total").innerText = total;
+let cart = JSON.parse(localStorage.getItem("cart")) || {
+  total: 0
+};
+
+document.getElementById("total").innerText = cart.total;
 
 function add(price){
-  total += price;
-  document.getElementById("total").innerText = total;
-  localStorage.setItem("total", total);
+  cart.total += price;
+  document.getElementById("total").innerText = cart.total;
+  localStorage.setItem("cart", JSON.stringify(cart));
 }
 </script>
 
