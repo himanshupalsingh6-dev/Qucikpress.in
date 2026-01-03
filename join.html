@@ -5,7 +5,7 @@
   <title>Join QuickPress</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- CSS -->
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -35,13 +35,10 @@
     text-align:center;
     margin-bottom:40px;
   ">
-    <h3 style="margin-bottom:10px;">
-      Partner ya Delivery ke liye direct contact karein
-    </h3>
-
-    <p style="margin-bottom:14px;font-size:14px;color:#555;">
-      Agar aap ironing partner ya delivery boy banna chahte hain,
-      to niche diye gaye number par call karein.
+    <h3>Partner / Delivery ke liye direct contact</h3>
+    <p style="font-size:14px;color:#555;">
+      Agar aap QuickPress ke sath kaam karna chahte hain,
+      to manager se direct baat karein.
     </p>
 
     <a href="tel:9258730561"
@@ -61,38 +58,33 @@
 
 <!-- PARTNER FORM -->
 <section class="section">
-  <h2 class="section-title">Partner Details Form</h2>
+  <h2 class="section-title">Become a QuickPress Partner</h2>
 
-  <input type="text" placeholder="Full Name">
-  <input type="tel" placeholder="Mobile Number">
-  <input type="text" placeholder="Shop / Area">
-  <input type="text" placeholder="City">
+  <input id="p_name" type="text" placeholder="Full Name">
+  <input id="p_mobile" type="tel" placeholder="Mobile Number">
+  <input id="p_type" type="text" placeholder="Partner Type (Ironing / Laundry)">
+  <input id="p_city" type="text" placeholder="City">
 
-  <select>
-    <option>Ironing Partner</option>
-    <option>Laundry + Ironing</option>
-  </select>
-
-  <button class="nav-btn" style="margin-top:10px;">
+  <button onclick="submitPartner()" class="nav-btn">
     Submit Partner Request
   </button>
 </section>
 
 <!-- DELIVERY FORM -->
 <section class="section">
-  <h2 class="section-title">Delivery Boy Details Form</h2>
+  <h2 class="section-title">Join as Delivery Boy</h2>
 
-  <input type="text" placeholder="Full Name">
-  <input type="tel" placeholder="Mobile Number">
-  <input type="text" placeholder="Vehicle (Bike / Cycle)">
-  <input type="text" placeholder="City">
+  <input id="d_name" type="text" placeholder="Full Name">
+  <input id="d_mobile" type="tel" placeholder="Mobile Number">
+  <input id="d_vehicle" type="text" placeholder="Vehicle (Bike / Cycle)">
+  <input id="d_city" type="text" placeholder="City">
 
-  <button class="nav-btn" style="margin-top:10px;">
+  <button onclick="submitDelivery()" class="nav-btn">
     Submit Delivery Request
   </button>
 </section>
 
-<!-- STATIC SUCCESS / INFO BOX (HTML ONLY) -->
+<!-- INFO BOX -->
 <section class="section">
   <div style="
     max-width:420px;
@@ -105,41 +97,12 @@
     font-weight:bold;
     color:#2e7d32;
   ">
-    ✅ Request submit karne ke baad  
-    <br>Manager aapse jald contact karega
-
-    <div style="margin-top:12px;">
-      <a href="https://wa.me/919258730561"
-         style="
-           display:inline-block;
-           background:#25d366;
-           color:#fff;
-           padding:12px 18px;
-           border-radius:6px;
-           text-decoration:none;
-           font-weight:bold;
-           margin-right:8px;
-         ">
-         💬 WhatsApp Manager
-      </a>
-
-      <a href="tel:9258730561"
-         style="
-           display:inline-block;
-           background:#f4b400;
-           color:#000;
-           padding:12px 18px;
-           border-radius:6px;
-           text-decoration:none;
-           font-weight:bold;
-         ">
-         📞 Call Manager
-      </a>
-    </div>
+    ✅ Submit ke baad aapka data secure ho jata hai  
+    <br>QuickPress team aapse jald contact karegi
   </div>
 </section>
 
-<!-- STICKY ORDER BUTTON (HTML ONLY) -->
+<!-- STICKY ORDER BUTTON -->
 <a href="order.html"
    style="
      position:fixed;
@@ -157,8 +120,61 @@
   🛒 Order Now
 </a>
 
-<!-- NAV TOGGLE -->
+<!-- SCRIPT -->
 <script>
+  /* ✅ APPS SCRIPT URL ALREADY ADDED */
+  const SCRIPT_URL =
+    "https://script.google.com/macros/s/AKfycbzszjbPTkxvJchK72-PGRDr3xQfKLHXBgiYa2QtiheIoZccirfMzsrV2e6NhnivBwW9NQ/exec";
+
+  function submitPartner() {
+    const name = p_name.value.trim();
+    const mobile = p_mobile.value.trim();
+    const type = p_type.value.trim();
+    const city = p_city.value.trim();
+
+    if (!name || !mobile || !type || !city) {
+      alert("Please fill all partner details");
+      return;
+    }
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({ name, mobile, type, city })
+    })
+    .then(() => {
+      alert("Partner request submitted successfully");
+      p_name.value = p_mobile.value = p_type.value = p_city.value = "";
+    })
+    .catch(() => alert("Error submitting partner request"));
+  }
+
+  function submitDelivery() {
+    const name = d_name.value.trim();
+    const mobile = d_mobile.value.trim();
+    const vehicle = d_vehicle.value.trim();
+    const city = d_city.value.trim();
+
+    if (!name || !mobile || !vehicle || !city) {
+      alert("Please fill all delivery details");
+      return;
+    }
+
+    fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify({
+        name,
+        mobile,
+        type: vehicle,
+        city
+      })
+    })
+    .then(() => {
+      alert("Delivery request submitted successfully");
+      d_name.value = d_mobile.value = d_vehicle.value = d_city.value = "";
+    })
+    .catch(() => alert("Error submitting delivery request"));
+  }
+
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
   }
