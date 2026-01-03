@@ -41,7 +41,7 @@ body {
   font-size: 14px;
 }
 
-.order-btn {
+.nav-btn {
   background: #f4b400;
   padding: 8px 14px;
   border-radius: 6px;
@@ -103,6 +103,9 @@ body {
   padding: 22px;
   border-radius: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card h3 {
@@ -180,27 +183,8 @@ body {
   .menu-toggle {
     display: block;
   }
-}
-/* ===== STICKY ORDER BUTTON (MOBILE) ===== */
-.sticky-order-btn {
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #d32f2f; /* RED */
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-  z-index: 9999;
-}
 
-/* Mobile only */
-@media (min-width: 769px) {
-  .sticky-order-btn {
-    display: none;
-  }
+  .hero h1 { font-size: 32px; }
+  .hero h2 { font-size: 18px; }
+  .hero p  { font-size: 15px; }
 }
