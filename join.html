@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Join QuickPress</title>
   <meta charset="UTF-8">
+  <title>Join QuickPress</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,8 +13,9 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
-    <a href="index.html" class="logo">QuickPress</a>
+    <div class="logo">QuickPress</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="join.html">Join Us</a>
@@ -32,11 +35,9 @@
     text-align:center;
     margin-bottom:40px;
   ">
-    <h3 style="margin-bottom:10px;color:#222;">
-      Partner ya Delivery ke liye direct contact karein
-    </h3>
+    <h3 style="margin-bottom:10px;">Partner / Delivery ke liye direct contact</h3>
 
-    <p style="margin-bottom:14px;color:#555;font-size:14px;">
+    <p style="margin-bottom:14px;font-size:14px;color:#555;">
       Agar aap ironing partner ya delivery boy banna chahte hain,
       to niche diye gaye number par call karein.
     </p>
@@ -50,7 +51,6 @@
          border-radius:8px;
          font-weight:bold;
          text-decoration:none;
-         font-size:15px;
        ">
        📞 Manager Call: 9258730561
     </a>
@@ -59,7 +59,7 @@
 
 <!-- PARTNER FORM -->
 <section class="section">
-  <h2>Partner Details Form</h2>
+  <h2 class="section-title">Partner Details</h2>
 
   <input id="p_name" type="text" placeholder="Full Name">
   <input id="p_mobile" type="tel" placeholder="Mobile Number">
@@ -71,24 +71,28 @@
     <option value="Laundry + Ironing">Laundry + Ironing</option>
   </select>
 
-  <button onclick="submitPartner()">Submit Partner Request</button>
+  <button onclick="submitPartner()" class="nav-btn" style="margin-top:10px;">
+    Submit Partner Request
+  </button>
 </section>
 
 <!-- DELIVERY FORM -->
 <section class="section">
-  <h2>Delivery Boy Details Form</h2>
+  <h2 class="section-title">Delivery Boy Details</h2>
 
   <input id="d_name" type="text" placeholder="Full Name">
   <input id="d_mobile" type="tel" placeholder="Mobile Number">
   <input id="d_vehicle" type="text" placeholder="Vehicle (Bike / Cycle)">
   <input id="d_city" type="text" placeholder="City">
 
-  <button onclick="submitDelivery()">Submit Delivery Request</button>
+  <button onclick="submitDelivery()" class="nav-btn" style="margin-top:10px;">
+    Submit Delivery Request
+  </button>
 </section>
 
 <!-- SCRIPT -->
 <script>
-  // 🔗 Google Apps Script URL (SAME AS BEFORE)
+  // 🔗 Google Apps Script URL (yahi rehne do)
   const SCRIPT_URL =
     "https://script.google.com/macros/s/AKfycbz74V4xaVKG8LTcnTOqVjyMpBihMqFKLRDQZ7tU9L1gkMQlbSRe-fJdUt_2N8duSt2f/exec";
 
@@ -97,7 +101,7 @@
     const mobile = p_mobile.value.trim();
     const area = p_area.value.trim();
     const city = p_city.value.trim();
-    const partnerType = p_type.value;
+    const type = p_type.value;
 
     if (!name || !mobile || !area || !city) {
       alert("Please fill all partner details");
@@ -112,17 +116,15 @@
         mobile,
         area,
         city,
-        partnerType
+        partnerType: type
       })
-    })
-    .then(() => {
+    }).then(() => {
       alert("Partner request submitted successfully");
       p_name.value = "";
       p_mobile.value = "";
       p_area.value = "";
       p_city.value = "";
-    })
-    .catch(() => alert("Error submitting partner request"));
+    });
   }
 
   function submitDelivery() {
@@ -145,15 +147,13 @@
         vehicle,
         city
       })
-    })
-    .then(() => {
+    }).then(() => {
       alert("Delivery request submitted successfully");
       d_name.value = "";
       d_mobile.value = "";
       d_vehicle.value = "";
       d_city.value = "";
-    })
-    .catch(() => alert("Error submitting delivery request"));
+    });
   }
 
   function toggleMenu() {
