@@ -1,342 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>QuickPress – Ironing & Laundry</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>QuickPress – Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
-
     body {
+      font-family: Arial, sans-serif;
       background: #f6f6f6;
-      color: #111;
+      padding: 16px;
     }
 
-    /* ================= HEADER ================= */
-    .header {
-      background: #fff;
-      padding: 12px 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .header-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      color: #e11d48;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .header-btn {
-      background: #f3f4f6;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
-    .header-bottom {
-      margin-top: 10px;
-    }
-
-    .location {
-      font-size: 12px;
-      color: #444;
-      margin-bottom: 6px;
-    }
-
-    .search input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      font-size: 13px;
-    }
-
-    /* ================= HERO ================= */
-    .hero {
-      margin: 16px;
-      padding: 32px;
-      background: linear-gradient(90deg, #22c55e, #16a34a);
-      border-radius: 18px;
-      color: #fff;
-    }
-
-    .hero h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 15px;
-      line-height: 1.4;
-    }
-
-    .hero button {
-      margin-top: 16px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      background: #fff;
-      color: #16a34a;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* ================= SECTIONS ================= */
-    .section-title {
-      margin: 24px 16px 12px;
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    /* PROMO */
-    .promo {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      padding: 0 16px 16px;
-    }
-
-    .promo-card {
-      background: #fff;
-      padding: 18px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    }
-
-    .promo-card h3 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    .promo-card p {
-      font-size: 13px;
-      color: #555;
-    }
-
-    /* CATEGORIES */
-    .categories {
-      display: flex;
-      gap: 12px;
-      padding: 0 16px 16px;
-      overflow-x: auto;
-    }
-
-    .category {
-      min-width: 90px;
-      background: #fff;
-      padding: 12px;
-      border-radius: 14px;
-      text-align: center;
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-    /* PRODUCTS */
+    /* PRODUCT GRID */
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 14px;
-      padding: 0 16px 24px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
     }
 
+    /* PRODUCT CARD */
     .product {
       background: #fff;
-      padding: 14px;
-      border-radius: 16px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      border-radius: 12px;
+      padding: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    .product h4 {
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .time {
+      font-size: 12px;
+      color: #16a34a;
+      margin: 6px 0;
+    }
+
+    .name {
       font-size: 14px;
-      margin-bottom: 6px;
+      font-weight: bold;
     }
 
     .price {
-      color: #16a34a;
-      font-weight: 700;
-      margin-bottom: 8px;
+      margin: 6px 0;
+      font-weight: bold;
     }
 
+    /* ADD BUTTON */
     .add-btn {
-      width: 100%;
-      padding: 8px;
-      border-radius: 8px;
       border: 1px solid #16a34a;
-      background: #fff;
       color: #16a34a;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* CTA */
-    .cta {
-      margin: 16px;
-      padding: 28px;
-      border-radius: 18px;
-      background: linear-gradient(90deg,#fde047,#facc15);
-      text-align: center;
-    }
-
-    .cta h2 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .cta button {
-      margin-top: 12px;
-      padding: 10px 20px;
-      border-radius: 10px;
-      border: none;
-      background: #111;
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    /* FOOTER */
-    footer {
       background: #fff;
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
-      color: #555;
-      border-top: 1px solid #eee;
+      padding: 6px 0;
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    /* ================= DESKTOP ================= */
-    @media (min-width: 769px) {
-      .hero h1 {
-        font-size: 36px;
-      }
-      .search input {
-        font-size: 14px;
-      }
+    /* QTY CONTROLS */
+    .qty-box {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid #16a34a;
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+
+    .qty-box button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      color: #16a34a;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header">
-  <div class="header-top">
-    <div class="logo">QuickPress</div>
-    <div class="header-actions">
-      <div class="header-btn">Login</div>
-      <div class="header-btn">🛒</div>
-    </div>
-  </div>
+<h2>QuickPress – Ironing Services</h2>
 
-  <div class="header-bottom">
-    <div class="location">⚡ 10 min delivery • Kasganj</div>
-    <div class="search">
-      <input type="text" placeholder="Search shirt, pant, saree…" />
-    </div>
-  </div>
-</header>
+<div class="products">
 
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <h1>Ironing in 10 Minutes</h1>
-  <p>Kapde Press, Turant Delivered<br>Doorstep Pickup & Drop</p>
-  <button>Order Now</button>
-</section>
-
-<!-- ================= PROMO ================= -->
-<section class="promo">
-  <div class="promo-card">
-    <h3>🧺 Doorstep Ironing</h3>
-    <p>Professional pressing service</p>
-  </div>
-  <div class="promo-card">
-    <h3>🚀 Express Delivery</h3>
-    <p>Fastest service in city</p>
-  </div>
-  <div class="promo-card">
-    <h3>🧼 Dry Cleaning</h3>
-    <p>Premium fabric care</p>
-  </div>
-</section>
-
-<!-- ================= CATEGORIES ================= -->
-<div class="section-title">Categories</div>
-<section class="categories">
-  <div class="category">👕 Shirt</div>
-  <div class="category">👖 Pant</div>
-  <div class="category">🥻 Saree</div>
-  <div class="category">🧥 Woolen</div>
-  <div class="category">🧼 Dry Clean</div>
-  <div class="category">⚡ Express</div>
-</section>
-
-<!-- ================= PRODUCTS ================= -->
-<div class="section-title">Popular Services</div>
-<section class="products">
+  <!-- PRODUCT 1 -->
   <div class="product">
-    <h4>Shirt Ironing</h4>
+    <img src="https://via.placeholder.com/150">
+    <div class="time">⏱ 10 mins</div>
+    <div class="name">Shirt Ironing</div>
     <div class="price">₹10</div>
-    <button class="add-btn">ADD</button>
-  </div>
-  <div class="product">
-    <h4>Pant Ironing</h4>
-    <div class="price">₹12</div>
-    <button class="add-btn">ADD</button>
-  </div>
-  <div class="product">
-    <h4>Saree Ironing</h4>
-    <div class="price">₹30</div>
-    <button class="add-btn">ADD</button>
-  </div>
-  <div class="product">
-    <h4>Woolen Ironing</h4>
-    <div class="price">₹25</div>
-    <button class="add-btn">ADD</button>
-  </div>
-</section>
 
-<!-- ================= HOW IT WORKS ================= -->
-<div class="section-title">How QuickPress Works</div>
-<section class="promo">
-  <div class="promo-card"><h3>📝 Order</h3><p>Select service online</p></div>
-  <div class="promo-card"><h3>🚚 Pickup</h3><p>From your doorstep</p></div>
-  <div class="promo-card"><h3>🧺 Ironing</h3><p>Clean & hygienic</p></div>
-  <div class="promo-card"><h3>🏠 Delivery</h3><p>Fast delivery</p></div>
-</section>
+    <button class="add-btn" onclick="add(this)">ADD</button>
 
-<!-- ================= CTA ================= -->
-<section class="cta">
-  <h2>Now Live in Kasganj 🚀</h2>
-  <p>Ironing & Laundry at your doorstep</p>
-  <button>Order Now</button>
-</section>
+    <div class="qty-box">
+      <button onclick="changeQty(this,-1)">−</button>
+      <span>1</span>
+      <button onclick="changeQty(this,1)">+</button>
+    </div>
+  </div>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  © 2026 QuickPress • Ironing & Laundry Service
-</footer>
+</div>
+
+<script>
+  function add(btn) {
+    btn.style.display = "none";
+    const qtyBox = btn.nextElementSibling;
+    qtyBox.style.display = "flex";
+  }
+
+  function changeQty(btn, change) {
+    const qtySpan = btn.parentElement.querySelector("span");
+    let qty = parseInt(qtySpan.innerText);
+    qty += change;
+
+    if (qty <= 0) {
+      btn.parentElement.style.display = "none";
+      btn.parentElement.previousElementSibling.style.display = "block";
+      qtySpan.innerText = 1;
+    } else {
+      qtySpan.innerText = qty;
+    }
+  }
+</script>
 
 </body>
 </html>
+
