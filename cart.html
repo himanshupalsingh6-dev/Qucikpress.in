@@ -47,16 +47,18 @@ body{margin:0;font-family:Arial;background:#f6f7f8}
 </div>
 
 <script>
-let total = Number(localStorage.getItem("total")) || 0;
+const cart = JSON.parse(localStorage.getItem("cart"));
 
-document.getElementById("total").innerText = total;
-
-document.getElementById("items").innerHTML =
-  total>0 ? "<p>Items added from services page</p>"
-          : "<p>Cart is empty</p>";
+if(!cart || cart.total <= 0){
+  document.getElementById("items").innerHTML = "<p>Cart is empty</p>";
+  document.getElementById("total").innerText = 0;
+}else{
+  document.getElementById("items").innerHTML = "<p>Items added successfully</p>";
+  document.getElementById("total").innerText = cart.total;
+}
 
 function checkout(){
-  if(total===0){
+  if(!cart || cart.total <= 0){
     alert("Cart is empty");
     return;
   }
