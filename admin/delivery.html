@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>QuickPress – Delivery Panel</title>
+  <title>QuickPress Delivery Panel</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../style.css">
 
@@ -14,26 +14,59 @@
 </head>
 <body>
 
+<!-- 🔐 LOGIN SCREEN -->
+<div id="loginBox" style="
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:#111;display:flex;align-items:center;justify-content:center;z-index:9999;">
+  <div style="background:#222;padding:30px;border-radius:10px;width:320px;text-align:center;color:#fff;">
+    <h2>Delivery Login</h2>
+
+    <input id="did" placeholder="Delivery ID"
+      style="width:100%;padding:10px;margin:10px 0;border-radius:6px;border:none">
+
+    <input id="dpass" type="password" placeholder="Password"
+      style="width:100%;padding:10px;margin-bottom:10px;border-radius:6px;border:none">
+
+    <button onclick="deliveryLogin()"
+      style="width:100%;padding:10px;background:#f4b400;border:none;border-radius:6px;font-weight:bold;">
+      Login
+    </button>
+
+    <p id="derr" style="color:#ff6b6b;display:none;margin-top:10px;">Wrong ID or Password</p>
+  </div>
+</div>
+
+<!-- PANEL -->
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo">Delivery Panel</div>
     <div class="nav-links">
       <a href="admin.html">Admin</a>
-      <a href="partner.html">Partners</a>
-      <a href="delivery.html">Delivery</a>
+      <a href="partner.html">Partner</a>
     </div>
   </div>
 </nav>
 
 <div class="wrap">
-  <h2>Delivery Boy Requests</h2>
-  <p>Yahan sirf Delivery Boy related entries manage kar sakte ho.</p>
+  <h2>Delivery Requests</h2>
 
-  <!-- SAME SHEET (Delivery rows) -->
   <iframe
     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRXP8ak4GPy1y2a1oCMt-j_9XMvI9FP-Sehzr2N5gKL5WPGA-kb6Ygzox3K7vVTsFHXQmbswr-x6kLz/pubhtml?gid=0&single=true&widget=true&headers=false">
   </iframe>
 </div>
+
+<script>
+  const DELIVERY_ID = "delivery";
+  const DELIVERY_PASS = "delivery123";
+
+  function deliveryLogin(){
+    if(did.value===DELIVERY_ID && dpass.value===DELIVERY_PASS){
+      document.getElementById("loginBox").style.display="none";
+    }else{
+      document.getElementById("derr").style.display="block";
+    }
+  }
+</script>
 
 </body>
 </html>
