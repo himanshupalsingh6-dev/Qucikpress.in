@@ -188,3 +188,46 @@ body {
   .hero h2 { font-size: 18px; }
   .hero p  { font-size: 15px; }
 }
+/* ===== JOIN PAGE FORMS ===== */
+
+.section input,
+.section select {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 14px;
+  margin: 10px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.section button {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px;
+  margin: 12px auto;
+  display: block;
+  background: #f4b400;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.section button:hover {
+  background: #e6a700;
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Desktop spacing */
+@media (min-width: 769px) {
+  .section {
+    text-align: center;
+  }
+}
