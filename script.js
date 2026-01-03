@@ -26,7 +26,7 @@ function change(i, v) {
 }
 
 function placeOrder() {
-  fetch("YOUR_GOOGLE_SCRIPT_URL", {
+  fetch(https://script.google.com/macros/s/AKfycbw92PI55WHJk8QFtcoPtmOmRgz_qYKOeQ6mAzWmWVHFAKlSYHbi10YMQt7HcCTsIb3G/exec, {
     method: "POST",
     body: JSON.stringify({
       name: name.value,
