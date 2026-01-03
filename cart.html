@@ -1,1 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Cart – QuickPress</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+body{margin:0;font-family:Arial;background:#f6f7f8}
+.header{
+  background:#fff;padding:14px;
+  font-size:20px;font-weight:800;
+  box-shadow:0 2px 6px rgba(0,0,0,.1)
+}
+.cart-box{
+  max-width:600px;margin:20px auto;
+  background:#fff;padding:16px;border-radius:12px
+}
+.item{
+  display:flex;justify-content:space-between;
+  padding:10px 0;border-bottom:1px solid #eee
+}
+.total{
+  font-size:20px;font-weight:800;
+  margin-top:14px
+}
+.btn{
+  display:block;width:100%;margin-top:14px;
+  padding:14px;border:none;border-radius:30px;
+  background:#f4b400;font-weight:800;font-size:16px
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🛒 My Cart</div>
+
+<div class="cart-box">
+  <div id="items"></div>
+
+  <div class="total">
+    Total: ₹<span id="total">0</span>
+  </div>
+
+  <button class="btn" onclick="checkout()">Proceed to Checkout</button>
+</div>
+
+<script>
+let total = Number(localStorage.getItem("total")) || 0;
+
+document.getElementById("total").innerText = total;
+
+document.getElementById("items").innerHTML =
+  total>0 ? "<p>Items added from services page</p>"
+          : "<p>Cart is empty</p>";
+
+function checkout(){
+  if(total===0){
+    alert("Cart is empty");
+    return;
+  }
+  window.location.href="checkout.html";
+}
+</script>
+
+</body>
+</html>
