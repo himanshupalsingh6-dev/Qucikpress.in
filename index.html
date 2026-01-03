@@ -4,30 +4,26 @@
   <meta charset="UTF-8">
   <title>QuickPress – Fast Ironing Service</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- ===== NAVBAR ===== -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-container">
     <div class="logo">QuickPress</div>
-
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="#services">Services</a>
       <a href="join.html">Join Us</a>
       <a href="login.html">Login</a>
-      <a href="order.html" class="order-btn">Order Now</a>
+      <a href="order.html" class="nav-btn">Order Now</a>
     </div>
   </div>
 </nav>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
   <h1>QuickPress</h1>
   <h2>Ironing that keeps up with your life</h2>
@@ -35,26 +31,22 @@
   <a href="order.html" class="hero-btn">Order Now</a>
 </section>
 
-<!-- ===== SERVICES ===== -->
+<!-- SERVICES -->
 <section class="section" id="services">
   <h2 class="section-title">Our Services</h2>
-
   <div class="cards">
     <div class="card">
       <h3>Ironing</h3>
       <p>Professional ironing service.</p>
     </div>
-
     <div class="card">
       <h3>Express</h3>
       <p>10-minute quick service.</p>
     </div>
-
     <div class="card">
       <h3>Pickup</h3>
       <p>Doorstep pickup & delivery.</p>
     </div>
-
     <div class="card">
       <h3>Partners</h3>
       <p>Verified ironing experts.</p>
@@ -62,71 +54,53 @@
   </div>
 </section>
 
-<!-- ===== WHY QUICKPRESS ===== -->
+<!-- WHY QUICKPRESS -->
 <section class="section light">
   <h2 class="section-title">Why QuickPress?</h2>
-
   <div class="stats">
-    <div class="stat">
-      <h3>5000+</h3>
-      <p>Customers</p>
-    </div>
-
-    <div class="stat">
-      <h3>1200+</h3>
-      <p>Users</p>
-    </div>
-
-    <div class="stat">
-      <h3>150+</h3>
-      <p>Partners</p>
-    </div>
-
-    <div class="stat">
-      <h3>10 Min</h3>
-      <p>Delivery</p>
-    </div>
+    <div class="stat"><h3>5000+</h3><p>Customers</p></div>
+    <div class="stat"><h3>1200+</h3><p>Users</p></div>
+    <div class="stat"><h3>150+</h3><p>Partners</p></div>
+    <div class="stat"><h3>10 Min</h3><p>Delivery</p></div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer-grid">
     <div>
       <h4>QuickPress</h4>
       <p>Fast & reliable ironing service.</p>
     </div>
-
     <div>
       <h4>Contact</h4>
       <p>📞 9258730561</p>
       <p>📧 support@quickpress.in</p>
     </div>
-
     <div>
       <h4>Support</h4>
       <p>Help Center</p>
       <p>Privacy Policy</p>
     </div>
-
     <div>
       <h4>WhatsApp</h4>
       <p>Chat with us</p>
     </div>
   </div>
-
-  <div class="footer-bottom">
-    © 2026 QuickPress. All rights reserved.
-  </div>
+  <div class="footer-bottom">© 2026 QuickPress. All rights reserved.</div>
 </footer>
 
-<!-- JS -->
+<!-- STICKY ORDER (HTML ONLY) -->
+<a href="order.html"
+   style="position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:#d32f2f;color:#fff;padding:15px 30px;border-radius:30px;font-weight:bold;text-decoration:none;z-index:9999;">
+  🛒 Order Now
+</a>
+
 <script>
   function toggleMenu() {
     document.getElementById("navLinks").classList.toggle("show");
   }
 </script>
-<a href="order.html" style="position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:red;color:white;padding:15px 30px;border-radius:30px;font-weight:bold;text-decoration:none;z-index:9999;">Order Now</a>
 
 </body>
 </html>
