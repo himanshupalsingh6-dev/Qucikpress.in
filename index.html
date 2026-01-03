@@ -1,110 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>QuickPress – Ironing & Laundry</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>QuickPress – Ironing & Laundry</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
-body{margin:0;font-family:Arial;background:#fafafa}
-.section{max-width:1200px;margin:auto;padding:50px 16px}
-.hero{
-  background:linear-gradient(135deg,#f4b400,#ffd54f);
-  border-radius:18px;
-  padding:60px 20px;
-  text-align:center;
-}
-.hero h1{margin:0;font-size:36px}
-.hero p{font-size:16px;margin:10px 0 20px}
-.btn{background:#000;color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:bold}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin-top:30px}
-.card{
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,.06)
-}
-.card img{width:50px;margin-bottom:10px}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
 
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;text-align:center}
-.stat{background:#fff;padding:25px;border-radius:14px}
+    body {
+      background: #f7f7f7;
+      color: #111;
+    }
 
-footer{background:#000;color:#fff;padding:40px 20px;margin-top:50px}
-footer a{color:#f4b400;text-decoration:none}
-</style>
+    /* HEADER */
+    header {
+      background: #fff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #e11d48;
+    }
+
+    .location {
+      font-size: 13px;
+      color: #444;
+    }
+
+    .search {
+      flex: 1;
+    }
+
+    .search input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+    }
+
+    .header-btn {
+      background: #f3f4f6;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(90deg, #22c55e, #16a34a);
+      margin: 24px;
+      border-radius: 18px;
+      padding: 40px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+
+    .hero button {
+      margin-top: 18px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      border: none;
+      background: #fff;
+      color: #16a34a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* PROMO CARDS */
+    .promo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      padding: 0 24px;
+    }
+
+    .promo-card {
+      border-radius: 16px;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .promo-card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .promo-card p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .promo-card button {
+      margin-top: 14px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      background: #111;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* CATEGORIES */
+    .section-title {
+      margin: 28px 24px 14px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .categories {
+      display: flex;
+      gap: 16px;
+      padding: 0 24px;
+      overflow-x: auto;
+    }
+
+    .category {
+      min-width: 100px;
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      cursor: pointer;
+    }
+
+    .category img {
+      width: 40px;
+      margin-bottom: 6px;
+    }
+
+    .category span {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* PRODUCTS */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      padding: 0 24px 40px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .product h4 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .price {
+      color: #16a34a;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #16a34a;
+      background: #fff;
+      color: #16a34a;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #555;
+      border-top: 1px solid #eee;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<section class="section">
-  <div class="hero">
-    <h1>Fast Ironing & Laundry at Your Doorstep</h1>
-    <p>Ironing • Dry Cleaning • Express Delivery</p>
-    <a href="services.html" class="btn">Order Now</a>
+<header>
+  <div class="logo">QuickPress</div>
+  <div class="location">⚡ Delivery in 10 minutes<br>Kasganj, UP</div>
+  <div class="search">
+    <input type="text" placeholder="Search shirt, pant, saree ironing…" />
+  </div>
+  <div class="header-btn">Login</div>
+  <div class="header-btn">Cart</div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Ironing in 10 Minutes</h1>
+    <p>Kapde Press, Turant Delivered<br>Doorstep Pickup & Drop</p>
+    <button>Order Now</button>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section">
-<h2>Our Services</h2>
-
-<div class="services">
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/2922/2922675.png">
-    <h3>Ironing</h3>
-    <p>Professional ironing</p>
-    <a href="services.html" class="btn">View</a>
+<section class="promo">
+  <div class="promo-card">
+    <h3>Ironing at your doorstep</h3>
+    <p>Professional pressing service</p>
+    <button>Order Now</button>
   </div>
 
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png">
+  <div class="promo-card">
+    <h3>Express 10-Min Delivery</h3>
+    <p>Fastest ironing service</p>
+    <button>Order Now</button>
+  </div>
+
+  <div class="promo-card">
     <h3>Dry Cleaning</h3>
-    <p>Premium garment care</p>
-    <a href="services.html" class="btn">View</a>
+    <p>Premium fabric care</p>
+    <button>Order Now</button>
   </div>
-
-  <div class="card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png">
-    <h3>Express Delivery</h3>
-    <p>10 min service</p>
-    <a href="services.html" class="btn">View</a>
-  </div>
-</div>
 </section>
 
-<!-- PERFORMANCE -->
-<section class="section">
-<h2>Why QuickPress</h2>
-
-<div class="stats">
-  <div class="stat">
-    <h2>500+</h2>
-    <p>Happy Customers</p>
-  </div>
-  <div class="stat">
-    <h2>50+</h2>
-    <p>Ironing Partners</p>
-  </div>
-  <div class="stat">
-    <h2>10 min</h2>
-    <p>Express Service</p>
-  </div>
-</div>
+<div class="section-title">Categories</div>
+<section class="categories">
+  <div class="category"><span>👕 Shirt</span></div>
+  <div class="category"><span>👖 Pant</span></div>
+  <div class="category"><span>🥻 Saree</span></div>
+  <div class="category"><span>🧥 Woolen</span></div>
+  <div class="category"><span>🧼 Dry Clean</span></div>
+  <div class="category"><span>⚡ Express</span></div>
 </section>
 
-<!-- FOOTER -->
+<div class="section-title">Popular Services</div>
+<section class="products">
+  <div class="product">
+    <h4>Shirt Ironing</h4>
+    <div class="price">₹10</div>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <div class="product">
+    <h4>Pant Ironing</h4>
+    <div class="price">₹12</div>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <div class="product">
+    <h4>Saree Ironing</h4>
+    <div class="price">₹30</div>
+    <button class="add-btn">ADD</button>
+  </div>
+
+  <div class="product">
+    <h4>Woolen Ironing</h4>
+    <div class="price">₹25</div>
+    <button class="add-btn">ADD</button>
+  </div>
+</section>
+
 <footer>
-  <h3>QuickPress</h3>
-  <p>Ironing & Laundry Service</p>
-  <p>
-    <a href="services.html">Services</a> |
-    <a href="join.html">Join Us</a> |
-    <a href="login.html">Login</a>
-  </p>
+  © 2026 QuickPress • Ironing & Laundry Service
 </footer>
 
 </body>
