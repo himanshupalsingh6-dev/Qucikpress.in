@@ -1,297 +1,246 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>QuickPress – Products</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>QuickPress – Everything Ironed in Minutes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f6f6f6;
-      padding: 16px;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
+  background:#f6f7f8;
+  color:#111;
+}
 
-    /* PRODUCT GRID */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 16px;
-    }
+/* ===== HEADER ===== */
+.header{
+  background:#fff;
+  padding:14px 20px;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  box-shadow:0 1px 6px rgba(0,0,0,.08);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.logo{
+  font-size:24px;
+  font-weight:800;
+  color:#f4b400;
+}
+.location{
+  font-size:14px;
+  font-weight:600;
+}
+.search{
+  flex:1;
+}
+.search input{
+  width:100%;
+  padding:12px 16px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  background:#f6f6f6;
+}
+.header a{
+  text-decoration:none;
+  color:#111;
+  font-weight:600;
+}
+.cart{
+  background:#f4b400;
+  padding:10px 16px;
+  border-radius:10px;
+}
 
-    /* PRODUCT CARD */
-    .product {
-      background: #fff;
-      border-radius: 12px;
-      padding: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
+/* ===== HERO ===== */
+.hero{
+  margin:20px;
+  background:linear-gradient(135deg,#ffd54f,#f4b400);
+  border-radius:18px;
+  padding:40px;
+  display:flex;
+  align-items:center;
+}
+.hero h1{
+  font-size:40px;
+  margin:0;
+}
+.hero p{
+  font-size:18px;
+  margin:12px 0 20px;
+}
+.hero .btn{
+  background:#111;
+  color:#fff;
+  padding:14px 28px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:700;
+}
 
-    .product img {
-      width: 100%;
-      border-radius: 8px;
-    }
+/* ===== PROMO ROW ===== */
+.section{
+  padding:10px 20px;
+}
+.promo-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:16px;
+}
+.promo{
+  border-radius:16px;
+  padding:20px;
+  color:#111;
+}
+.promo.yellow{background:#fff3cd}
+.promo.green{background:#e8f5e9}
+.promo.blue{background:#e3f2fd}
+.promo h3{margin:0}
+.promo a{
+  display:inline-block;
+  margin-top:12px;
+  text-decoration:none;
+  font-weight:700;
+  color:#111;
+}
 
-    .time {
-      font-size: 12px;
-      color: #16a34a;
-      margin: 6px 0;
-    }
+/* ===== CATEGORIES ===== */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
+  gap:14px;
+  margin-top:20px;
+}
+.cat{
+  background:#fff;
+  border-radius:14px;
+  padding:16px;
+  text-align:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.06);
+  cursor:pointer;
+}
+.cat span{
+  display:block;
+  margin-top:8px;
+  font-weight:600;
+  font-size:14px;
+}
 
-    .name {
-      font-size: 14px;
-      font-weight: bold;
-    }
+/* ===== FOOTER ===== */
+footer{
+  background:#111;
+  color:#fff;
+  padding:30px 20px;
+  margin-top:30px;
+}
+footer a{
+  color:#f4b400;
+  text-decoration:none;
+  margin-right:14px;
+}
 
-    .price {
-      margin: 6px 0;
-      font-weight: bold;
-    }
+/* ===== MOBILE ORDER BUTTON ===== */
+.mobile-order{
+  display:none;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#e53935;
+  text-align:center;
+  padding:14px;
+  font-size:18px;
+  font-weight:800;
+}
+.mobile-order a{
+  color:#fff;
+  text-decoration:none;
+}
 
-    /* ADD BUTTON */
-    .add-btn {
-      border: 1px solid #16a34a;
-      color: #16a34a;
-      background: #fff;
-      padding: 6px 0;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    /* QTY CONTROLS */
-    .qty-box {
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      border: 1px solid #16a34a;
-      border-radius: 8px;
-      padding: 4px 8px;
-    }
-
-    .qty-box button {
-      background: none;
-      border: none;
-      font-size: 18px;
-      color: #16a34a;
-      cursor: pointer;
-    }
-  </style>
+@media(max-width:768px){
+  .hero h1{font-size:28px}
+  .mobile-order{display:block}
+}
+</style>
 </head>
+
 <body>
 
-<h2>QuickPress – Ironing Services</h2>
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">QuickPress</div>
+  <div class="location">Delivery in 10 minutes<br><small>Kasganj, UP</small></div>
 
-<div class="products">
-
-  <!-- PRODUCT 1 -->
-  <div class="product">
-    <img src="https://via.placeholder.com/150">
-    <div class="time">⏱ 10 mins</div>
-    <div class="name">Shirt Ironing</div>
-    <div class="price">₹10</div>
-
-    <button class="add-btn" onclick="add(this)">ADD</button>
-
-    <div class="qty-box">
-      <button onclick="changeQty(this,-1)">−</button>
-      <span>1</span>
-      <button onclick="changeQty(this,1)">+</button>
-    </div>
+  <div class="search">
+    <input placeholder="Search 'shirt ironing', 'saree dry clean'">
   </div>
 
+  <a href="login.html">Login</a>
+  <a href="services.html" class="cart">Order Now</a>
 </div>
 
-<script>
-  function add(btn) {
-    btn.style.display = "none";
-    const qtyBox = btn.nextElementSibling;
-    qtyBox.style.display = "flex";
-  }
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>Everything ironed in minutes</h1>
+    <p>Ironing • Dry Cleaning • Express Pickup & Delivery</p>
+    <a href="services.html" class="btn">Start Order</a>
+  </div>
+</div>
 
-  function changeQty(btn, change) {
-    const qtySpan = btn.parentElement.querySelector("span");
-    let qty = parseInt(qtySpan.innerText);
-    qty += change;
+<!-- PROMO -->
+<div class="section">
+  <div class="promo-row">
+    <div class="promo yellow">
+      <h3>Express Ironing</h3>
+      <p>Urgent clothes ironed in just 10 minutes</p>
+      <a href="services.html">Order Now →</a>
+    </div>
+    <div class="promo green">
+      <h3>Dry Cleaning</h3>
+      <p>Woolen & premium fabric care</p>
+      <a href="services.html">Order Now →</a>
+    </div>
+    <div class="promo blue">
+      <h3>Doorstep Pickup</h3>
+      <p>We pickup & deliver at your home</p>
+      <a href="services.html">Order Now →</a>
+    </div>
+  </div>
+</div>
 
-    if (qty <= 0) {
-      btn.parentElement.style.display = "none";
-      btn.parentElement.previousElementSibling.style.display = "block";
-      qtySpan.innerText = 1;
-    } else {
-      qtySpan.innerText = qty;
-    }
-  }
-</script>
+<!-- CATEGORIES -->
+<div class="section">
+  <h2>Popular Services</h2>
+  <div class="categories">
+    <div class="cat">👔<span>Shirt Ironing</span></div>
+    <div class="cat">👖<span>Pant Ironing</span></div>
+    <div class="cat">🥻<span>Saree Care</span></div>
+    <div class="cat">🧥<span>Woolen</span></div>
+    <div class="cat">🧼<span>Dry Clean</span></div>
+    <div class="cat">🚀<span>Express</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <h3>QuickPress</h3>
+  <p>Fast ironing & laundry service</p>
+  <p>
+    <a href="services.html">Services</a>
+    <a href="join.html">Join Us</a>
+    <a href="admin/admin.html">Admin</a>
+  </p>
+</footer>
+
+<!-- MOBILE ORDER -->
+<div class="mobile-order">
+  <a href="services.html">ORDER NOW</a>
+</div>
 
 </body>
 </html>
-<style>
-/* HERO SECTION */
-.hero {
-  margin: 20px;
-  padding: 40px;
-  border-radius: 20px;
-  background: linear-gradient(90deg, #fde047, #ef4444);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #111;
-}
-
-/* LEFT TEXT */
-.hero-text {
-  max-width: 55%;
-}
-
-.hero-text h1 {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 12px;
-}
-
-.hero-text p {
-  font-size: 16px;
-  margin-bottom: 16px;
-}
-
-.hero-text .cta {
-  padding: 12px 26px;
-  border-radius: 10px;
-  background: #111;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-/* RIGHT IMAGE */
-.hero-image img {
-  max-width: 320px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-text h1 {
-    font-size: 30px;
-  }
-
-  .hero-image img {
-    margin-top: 20px;
-    max-width: 220px;
-  }
-}
-</style>
-
-<section class="hero">
-  <div class="hero-text">
-    <h1>⚡ Ironing in 10 Minutes</h1>
-    <p>
-      <strong>QuickPress</strong> – Kapde Press, Turant Delivered<br>
-      Shirt • Pant • Saree • Woolen<br>
-      Doorstep Pickup & Drop
-    </p>
-    <button class="cta">Order Now</button>
-  </div>
-
-  <div class="hero-image">
-    <img src="https://cdn-icons-png.flaticon.com/512/2933/2933884.png" alt="Ironing Service">
-  </div>
-</section>
-<style>
-/* ===== BLINKIT STYLE YELLOW HERO ===== */
-
-.hero {
-  margin: 20px;
-  padding: 40px 48px;
-  border-radius: 20px;
-  background: #FDE047; /* ONLY YELLOW */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* LEFT CONTENT */
-.hero-text {
-  max-width: 55%;
-}
-
-.hero-text h1 {
-  font-size: 40px;
-  font-weight: 800;
-  color: #111;
-  margin-bottom: 12px;
-}
-
-.hero-text p {
-  font-size: 16px;
-  color: #374151;
-  line-height: 1.5;
-  margin-bottom: 18px;
-}
-
-/* CTA BUTTON (Blinkit style) */
-.hero-text button {
-  background: #16A34A;
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 10px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-/* RIGHT IMAGE */
-.hero-image img {
-  max-width: 300px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 28px 20px;
-  }
-
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-text h1 {
-    font-size: 28px;
-  }
-
-  .hero-image img {
-    margin-top: 20px;
-    max-width: 220px;
-  }
-}
-</style>
-
-<section class="hero">
-  <div class="hero-text">
-    <h1>Ironing in 10 minutes</h1>
-    <p>
-      <strong>QuickPress</strong> – Kapde press, turant delivered<br>
-      Shirt • Pant • Saree • Woolen<br>
-      Doorstep pickup & drop
-    </p>
-    <button>Order Now</button>
-  </div>
-
-  <div class="hero-image">
-    <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" alt="Ironing service">
-  </div>
-</section>
-
