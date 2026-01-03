@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>QuickPress – Fast Ironing Service</title>
+  <title>QuickPress – Ironing & Delivery</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <style>
+    body{margin:0;font-family:Arial,sans-serif;background:#fafafa}
+    .section{padding:30px 16px;max-width:1200px;margin:auto}
+    .section-title{text-align:center;margin-bottom:20px}
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .card{border:1px solid #eee;padding:16px;border-radius:12px;background:#fff}
+    .card h3{margin-top:0}
+    .nav-btn{background:#f4b400;border:none;padding:10px 16px;border-radius:6px;font-weight:bold;cursor:pointer}
+    .nav-btn:hover{opacity:.9}
+  </style>
 </head>
 <body>
 
@@ -13,91 +26,150 @@
   <div class="nav-container">
     <div class="logo">QuickPress</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
     <div class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
-      <a href="#services">Services</a>
       <a href="join.html">Join Us</a>
       <a href="login.html">Login</a>
-      <a href="order.html" class="nav-btn">Order Now</a>
+      <a href="#" class="nav-btn">Order Now</a>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <h1>QuickPress</h1>
-  <h2>Ironing that keeps up with your life</h2>
-  <p>Perfectly ironed clothes delivered in just <b>10 minutes</b>.</p>
-  <a href="order.html" class="hero-btn">Order Now</a>
+<section class="section" style="text-align:center;background:#fff7d6;border-radius:12px;margin-top:20px;">
+  <h1>Fast Ironing & Doorstep Delivery</h1>
+  <p>Professional ironing service with quick pickup & delivery</p>
 </section>
 
 <!-- SERVICES -->
-<section class="section" id="services">
+<section class="section">
   <h2 class="section-title">Our Services</h2>
-  <div class="cards">
+
+  <div class="services">
     <div class="card">
       <h3>Ironing</h3>
-      <p>Professional ironing service.</p>
+      <p>Professional ironing per cloth</p>
+      <p><b>₹10 / cloth</b></p>
+      <button onclick="openOrder('Ironing')" class="nav-btn">Order Now</button>
     </div>
+
     <div class="card">
-      <h3>Express</h3>
-      <p>10-minute quick service.</p>
+      <h3>Express (10 min)</h3>
+      <p>Fast ironing & delivery</p>
+      <p><b>₹20 / cloth</b></p>
+      <button onclick="openOrder('Express')" class="nav-btn">Order Now</button>
     </div>
+
     <div class="card">
-      <h3>Pickup</h3>
-      <p>Doorstep pickup & delivery.</p>
-    </div>
-    <div class="card">
-      <h3>Partners</h3>
-      <p>Verified ironing experts.</p>
+      <h3>Normal Delivery</h3>
+      <p>Same day ironing & delivery</p>
+      <p><b>₹15 / cloth</b></p>
+      <button onclick="openOrder('Normal')" class="nav-btn">Order Now</button>
     </div>
   </div>
 </section>
 
-<!-- WHY QUICKPRESS -->
-<section class="section light">
-  <h2 class="section-title">Why QuickPress?</h2>
-  <div class="stats">
-    <div class="stat"><h3>5000+</h3><p>Customers</p></div>
-    <div class="stat"><h3>1200+</h3><p>Users</p></div>
-    <div class="stat"><h3>150+</h3><p>Partners</p></div>
-    <div class="stat"><h3>10 Min</h3><p>Delivery</p></div>
-  </div>
-</section>
+<!-- ORDER FORM MODAL -->
+<div id="orderBox" style="
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,.6);
+  z-index:9999;
+  align-items:center;
+  justify-content:center;
+">
+  <div style="background:#fff;width:90%;max-width:420px;padding:20px;border-radius:12px;">
+    <h3 id="serviceName">Order Service</h3>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <h4>QuickPress</h4>
-      <p>Fast & reliable ironing service.</p>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <p>📞 9258730561</p>
-      <p>📧 support@quickpress.in</p>
-    </div>
-    <div>
-      <h4>Support</h4>
-      <p>Help Center</p>
-      <p>Privacy Policy</p>
-    </div>
-    <div>
-      <h4>WhatsApp</h4>
-      <p>Chat with us</p>
-    </div>
-  </div>
-  <div class="footer-bottom">© 2026 QuickPress. All rights reserved.</div>
-</footer>
+    <input id="custName" placeholder="Your Name"
+      style="width:100%;padding:10px;margin:8px 0;">
 
-<!-- STICKY ORDER (HTML ONLY) -->
-<a href="order.html"
-   style="position:fixed;bottom:15px;left:50%;transform:translateX(-50%);background:#d32f2f;color:#fff;padding:15px 30px;border-radius:30px;font-weight:bold;text-decoration:none;z-index:9999;">
+    <input id="custMobile" placeholder="Mobile Number"
+      style="width:100%;padding:10px;margin:8px 0;">
+
+    <textarea id="custAddress" placeholder="Full Delivery Address"
+      style="width:100%;padding:10px;margin:8px 0;"></textarea>
+
+    <!-- MAP -->
+    <a href="https://maps.google.com" target="_blank"
+       style="display:block;margin:8px 0;color:#f4b400;font-weight:bold;">
+      📍 Choose location on Google Maps
+    </a>
+
+    <button onclick="placeOrder()" class="nav-btn" style="width:100%;margin-top:10px;">
+      Place Order
+    </button>
+
+    <button onclick="closeOrder()" style="
+      width:100%;margin-top:8px;
+      background:#eee;border:none;padding:10px;border-radius:6px;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<!-- STICKY ORDER BUTTON (MOBILE) -->
+<a href="#"
+   onclick="openOrder('Ironing')"
+   style="
+     position:fixed;
+     bottom:15px;
+     left:50%;
+     transform:translateX(-50%);
+     background:#d32f2f;
+     color:#fff;
+     padding:14px 28px;
+     border-radius:30px;
+     font-weight:bold;
+     text-decoration:none;
+     z-index:9999;
+   ">
   🛒 Order Now
 </a>
 
+<!-- SCRIPT -->
 <script>
-  function toggleMenu() {
+  let selectedService = "";
+
+  function openOrder(service){
+    selectedService = service;
+    document.getElementById("serviceName").innerText =
+      "Order: " + service;
+    document.getElementById("orderBox").style.display = "flex";
+  }
+
+  function closeOrder(){
+    document.getElementById("orderBox").style.display = "none";
+  }
+
+  function placeOrder(){
+    const name = custName.value.trim();
+    const mobile = custMobile.value.trim();
+    const address = custAddress.value.trim();
+
+    if(!name || !mobile || !address){
+      alert("Please fill all details");
+      return;
+    }
+
+    alert(
+      "✅ Order Placed Successfully!\n\n" +
+      "Service: " + selectedService +
+      "\nName: " + name +
+      "\nMobile: " + mobile
+    );
+
+    custName.value = "";
+    custMobile.value = "";
+    custAddress.value = "";
+
+    closeOrder();
+  }
+
+  function toggleMenu(){
     document.getElementById("navLinks").classList.toggle("show");
   }
 </script>
