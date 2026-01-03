@@ -88,21 +88,17 @@ input, textarea{
 </div>
 
 <script>
-/* 🔗 GOOGLE APPS SCRIPT URL */
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbzRKy_rqBNYB37IPVTXVhjEVquUFVU6yTIU3WtCbGkd7Zwr1Pe1AsHy4ylp36uElw6X0w/exec";
 
-/* 🔴 FIX: total ko number me convert */
-let total = Number(localStorage.getItem("total"));
+const cart = JSON.parse(localStorage.getItem("cart"));
 
-/* 🔒 EMPTY CART BLOCK */
-if (!total || total <= 0) {
+if(!cart || cart.total <= 0){
   alert("Cart is empty. Please add items first.");
-  window.location.href = "services.html";
+  window.location.href="services.html";
 }
 
-/* SHOW TOTAL */
-document.getElementById("total").innerText = total;
+document.getElementById("total").innerText = cart.total;
 
 function placeOrder(){
   const name = document.getElementById("name").value.trim();
@@ -117,24 +113,21 @@ function placeOrder(){
   fetch(SCRIPT_URL,{
     method:"POST",
     body:JSON.stringify({
-      name: name,
-      mobile: mobile,
-      address: address,
-      total: total,
-      payment: "COD"
+      name:name,
+      mobile:mobile,
+      address:address,
+      total: cart.total,
+      payment:"COD"
     })
   })
-  .then(res => res.json())
-  .then(data => {
-    alert(
-      "✅ Order placed successfully!\n\n" +
-      "Order ID: " + data.orderId
-    );
-    localStorage.removeItem("total");
-    window.location.href = "index.html";
+  .then(res=>res.json())
+  .then(data=>{
+    alert("✅ Order placed!\nOrder ID: "+data.orderId);
+    localStorage.removeItem("cart");
+    window.location.href="index.html";
   })
-  .catch(() => {
-    alert("❌ Order failed. Please try again.");
+  .catch(()=>{
+    alert("❌ Order failed");
   });
 }
 </script>
