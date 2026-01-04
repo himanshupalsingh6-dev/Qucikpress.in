@@ -1,136 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>My Orders – QuickPress</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f6f7f8;
-}
-.box{
-  max-width:720px;
-  margin:24px auto;
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-}
-h2{
-  text-align:center;
-  margin-top:0;
-}
-input{
-  width:100%;
-  padding:12px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  margin-bottom:10px;
-  font-size:15px;
-}
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:30px;
-  background:#f4b400;
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer;
-}
-.order{
-  border:1px solid #eee;
-  padding:14px;
-  border-radius:12px;
-  margin-top:14px;
-  background:#fafafa;
-}
-.order b{
-  color:#111;
-}
-.status{
-  font-weight:bold;
-  padding:4px 10px;
-  border-radius:20px;
-  display:inline-block;
-}
-.status.Pending{background:#fff3cd}
-.status.Assigned{background:#d1ecf1}
-.status.Picked{background:#ffeeba}
-.status.Delivered{background:#d4edda}
-.note{
-  font-size:13px;
-  color:#666;
-  margin-top:10px;
-  text-align:center;
-}
-</style>
+  <title>My Orders</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="box">
-  <h2>My Orders</h2>
+<h2>My Orders</h2>
+<ul id="orders"></ul>
 
-  <input id="mobile" type="tel" placeholder="Enter your mobile number">
-  <button onclick="loadOrders()">View Orders</button>
-
-  <div id="result"></div>
-
-  <div class="note">
-    Showing orders based on your mobile number
-  </div>
-</div>
-
-<script>
-/* 🔗 GOOGLE APPS SCRIPT WEB APP URL */
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzRKy_rqBNYB37IPVTXVhjEVquUFVU6yTIU3WtCbGkd7Zwr1Pe1AsHy4ylp36uElw6X0w/exec";
-
-function loadOrders(){
-  const mobile = document.getElementById("mobile").value.trim();
-  const box = document.getElementById("result");
-
-  box.innerHTML = "";
-
-  if(!mobile){
-    alert("Please enter your mobile number");
-    return;
-  }
-
-  fetch(SCRIPT_URL + "?mobile=" + mobile)
-    .then(res => res.json())
-    .then(data => {
-
-      if(!data.orders || data.orders.length === 0){
-        box.innerHTML = "<p>No orders found.</p>";
-        return;
-      }
-
-      data.orders.forEach(o => {
-        const status = o.Status || "Pending";
-
-        const div = document.createElement("div");
-        div.className = "order";
-        div.innerHTML = `
-          <p><b>Order ID:</b> ${o.OrderId || o.OrderID}</p>
-          <p><b>Total:</b> ₹${o.Total}</p>
-          <p><b>Status:</b>
-            <span class="status ${status}">${status}</span>
-          </p>
-          <p><b>Date:</b> ${o.Date}</p>
-        `;
-        box.appendChild(div);
-      });
-    })
-    .catch(() => {
-      alert("Failed to load orders. Please try again.");
-    });
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
