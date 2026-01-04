@@ -1,136 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Checkout – QuickPress</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, sans-serif;
-  background:#f6f7f8;
-}
-.box{
-  max-width:520px;
-  margin:24px auto;
-  background:#fff;
-  padding:22px;
-  border-radius:14px;
-  box-shadow:0 6px 18px rgba(0,0,0,.08);
-}
-h2{
-  text-align:center;
-  margin-top:0;
-}
-.summary{
-  background:#fff7d6;
-  padding:14px;
-  border-radius:10px;
-  margin-bottom:16px;
-  font-weight:bold;
-}
-input, textarea{
-  width:100%;
-  padding:12px;
-  margin:8px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:14px;
-}
-.btn{
-  width:100%;
-  padding:14px;
-  margin-top:12px;
-  border:none;
-  border-radius:30px;
-  background:#f4b400;
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer;
-}
-.note{
-  font-size:13px;
-  color:#555;
-  margin-top:10px;
-  text-align:center;
-}
-</style>
+  <title>Checkout</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="box">
-  <h2>Checkout</h2>
-
-  <!-- ORDER SUMMARY -->
-  <div class="summary">
-    Total Amount: ₹<span id="total">0</span>
-  </div>
-
-  <!-- CUSTOMER DETAILS -->
-  <input id="name" type="text" placeholder="Full Name">
-  <input id="mobile" type="tel" placeholder="Mobile Number">
-  <textarea id="address" rows="3" placeholder="Full Delivery Address"></textarea>
-
-  <p style="margin:8px 0;">
-    📍 <a href="https://maps.google.com" target="_blank">
-    Choose location on Google Maps</a>
-  </p>
-
-  <p><b>Payment Method:</b> Cash on Delivery</p>
-
-  <button class="btn" onclick="placeOrder()">Place Order</button>
-
-  <div class="note">
-    By placing order you agree to QuickPress terms
-  </div>
-</div>
-
 <script>
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzRKy_rqBNYB37IPVTXVhjEVquUFVU6yTIU3WtCbGkd7Zwr1Pe1AsHy4ylp36uElw6X0w/exec";
-
-const cart = JSON.parse(localStorage.getItem("cart"));
-
-if(!cart || cart.total <= 0){
-  alert("Cart is empty. Please add items first.");
-  window.location.href="services.html";
-}
-
-document.getElementById("total").innerText = cart.total;
-
-function placeOrder(){
-  const name = document.getElementById("name").value.trim();
-  const mobile = document.getElementById("mobile").value.trim();
-  const address = document.getElementById("address").value.trim();
-
-  if(!name || !mobile || !address){
-    alert("Please fill all details");
-    return;
-  }
-
-  fetch(SCRIPT_URL,{
-    method:"POST",
-    body:JSON.stringify({
-      name:name,
-      mobile:mobile,
-      address:address,
-      total: cart.total,
-      payment:"COD"
-    })
-  })
-  .then(res=>res.json())
-  .then(data=>{
-    alert("✅ Order placed!\nOrder ID: "+data.orderId);
-    localStorage.removeItem("cart");
-    window.location.href="index.html";
-  })
-  .catch(()=>{
-    alert("❌ Order failed");
-  });
+if(!localStorage.getItem("user")){
+  location.href="login.html";
 }
 </script>
 
+<h2>Checkout</h2>
+<p>Payment: Cash on Delivery</p>
+
+<button onclick="placeOrder()">Confirm Order</button>
+
+<script src="app.js"></script>
 </body>
 </html>
