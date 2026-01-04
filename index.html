@@ -1,246 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>QuickPress – Everything Ironed in Minutes</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial;
-  background:#f6f7f8;
-  color:#111;
-}
-
-/* ===== HEADER ===== */
-.header{
-  background:#fff;
-  padding:14px 20px;
-  display:flex;
-  align-items:center;
-  gap:20px;
-  box-shadow:0 1px 6px rgba(0,0,0,.08);
-  position:sticky;
-  top:0;
-  z-index:50;
-}
-.logo{
-  font-size:24px;
-  font-weight:800;
-  color:#f4b400;
-}
-.location{
-  font-size:14px;
-  font-weight:600;
-}
-.search{
-  flex:1;
-}
-.search input{
-  width:100%;
-  padding:12px 16px;
-  border-radius:10px;
-  border:1px solid #ddd;
-  background:#f6f6f6;
-}
-.header a{
-  text-decoration:none;
-  color:#111;
-  font-weight:600;
-}
-.cart{
-  background:#f4b400;
-  padding:10px 16px;
-  border-radius:10px;
-}
-
-/* ===== HERO ===== */
-.hero{
-  margin:20px;
-  background:linear-gradient(135deg,#ffd54f,#f4b400);
-  border-radius:18px;
-  padding:40px;
-  display:flex;
-  align-items:center;
-}
-.hero h1{
-  font-size:40px;
-  margin:0;
-}
-.hero p{
-  font-size:18px;
-  margin:12px 0 20px;
-}
-.hero .btn{
-  background:#111;
-  color:#fff;
-  padding:14px 28px;
-  border-radius:30px;
-  text-decoration:none;
-  font-weight:700;
-}
-
-/* ===== PROMO ROW ===== */
-.section{
-  padding:10px 20px;
-}
-.promo-row{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:16px;
-}
-.promo{
-  border-radius:16px;
-  padding:20px;
-  color:#111;
-}
-.promo.yellow{background:#fff3cd}
-.promo.green{background:#e8f5e9}
-.promo.blue{background:#e3f2fd}
-.promo h3{margin:0}
-.promo a{
-  display:inline-block;
-  margin-top:12px;
-  text-decoration:none;
-  font-weight:700;
-  color:#111;
-}
-
-/* ===== CATEGORIES ===== */
-.categories{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(110px,1fr));
-  gap:14px;
-  margin-top:20px;
-}
-.cat{
-  background:#fff;
-  border-radius:14px;
-  padding:16px;
-  text-align:center;
-  box-shadow:0 4px 12px rgba(0,0,0,.06);
-  cursor:pointer;
-}
-.cat span{
-  display:block;
-  margin-top:8px;
-  font-weight:600;
-  font-size:14px;
-}
-
-/* ===== FOOTER ===== */
-footer{
-  background:#111;
-  color:#fff;
-  padding:30px 20px;
-  margin-top:30px;
-}
-footer a{
-  color:#f4b400;
-  text-decoration:none;
-  margin-right:14px;
-}
-
-/* ===== MOBILE ORDER BUTTON ===== */
-.mobile-order{
-  display:none;
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  background:#e53935;
-  text-align:center;
-  padding:14px;
-  font-size:18px;
-  font-weight:800;
-}
-.mobile-order a{
-  color:#fff;
-  text-decoration:none;
-}
-
-@media(max-width:768px){
-  .hero h1{font-size:28px}
-  .mobile-order{display:block}
-}
-</style>
+  <title>QuickPress</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-<div class="header">
-  <div class="logo">QuickPress</div>
-  <div class="location">Delivery in 10 minutes<br><small>Kasganj, UP</small></div>
-
-  <div class="search">
-    <input placeholder="Search 'shirt ironing', 'saree dry clean'">
-  </div>
-
-  <a href="login.html">Login</a>
-  <a href="services.html" class="cart">Order Now</a>
-</div>
-
-<!-- HERO -->
-<div class="hero">
+<header>
+  <h2>QuickPress</h2>
   <div>
-    <h1>Everything ironed in minutes</h1>
-    <p>Ironing • Dry Cleaning • Express Pickup & Delivery</p>
-    <a href="services.html" class="btn">Start Order</a>
+    <button onclick="goCart()">🛒 Cart</button>
+    <button onclick="goAccount()">👤 My Account</button>
   </div>
+</header>
+
+<h1>Ironing Services</h1>
+
+<div class="product">
+  Shirt – ₹20
+  <button onclick="addToCart('Shirt',20)">Add</button>
 </div>
 
-<!-- PROMO -->
-<div class="section">
-  <div class="promo-row">
-    <div class="promo yellow">
-      <h3>Express Ironing</h3>
-      <p>Urgent clothes ironed in just 10 minutes</p>
-      <a href="services.html">Order Now →</a>
-    </div>
-    <div class="promo green">
-      <h3>Dry Cleaning</h3>
-      <p>Woolen & premium fabric care</p>
-      <a href="services.html">Order Now →</a>
-    </div>
-    <div class="promo blue">
-      <h3>Doorstep Pickup</h3>
-      <p>We pickup & deliver at your home</p>
-      <a href="services.html">Order Now →</a>
-    </div>
-  </div>
+<div class="product">
+  Pant – ₹25
+  <button onclick="addToCart('Pant',25)">Add</button>
 </div>
 
-<!-- CATEGORIES -->
-<div class="section">
-  <h2>Popular Services</h2>
-  <div class="categories">
-    <div class="cat">👔<span>Shirt Ironing</span></div>
-    <div class="cat">👖<span>Pant Ironing</span></div>
-    <div class="cat">🥻<span>Saree Care</span></div>
-    <div class="cat">🧥<span>Woolen</span></div>
-    <div class="cat">🧼<span>Dry Clean</span></div>
-    <div class="cat">🚀<span>Express</span></div>
-  </div>
+<div class="product">
+  Saree – ₹40
+  <button onclick="addToCart('Saree',40)">Add</button>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <h3>QuickPress</h3>
-  <p>Fast ironing & laundry service</p>
-  <p>
-    <a href="services.html">Services</a>
-    <a href="join.html">Join Us</a>
-    <a href="admin/admin.html">Admin</a>
-  </p>
-</footer>
-
-<!-- MOBILE ORDER -->
-<div class="mobile-order">
-  <a href="services.html">ORDER NOW</a>
-</div>
-
+<script src="app.js"></script>
 </body>
 </html>
