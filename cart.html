@@ -1,70 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>My Cart – QuickPress</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-body{margin:0;font-family:Arial;background:#f6f7f8}
-.header{
-  background:#fff;padding:14px;
-  font-size:20px;font-weight:800;
-  box-shadow:0 2px 6px rgba(0,0,0,.1)
-}
-.cart-box{
-  max-width:600px;margin:20px auto;
-  background:#fff;padding:16px;border-radius:12px
-}
-.item{
-  display:flex;justify-content:space-between;
-  padding:10px 0;border-bottom:1px solid #eee
-}
-.total{
-  font-size:20px;font-weight:800;
-  margin-top:14px
-}
-.btn{
-  display:block;width:100%;margin-top:14px;
-  padding:14px;border:none;border-radius:30px;
-  background:#f4b400;font-weight:800;font-size:16px
-}
-</style>
+  <title>Cart</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="header">🛒 My Cart</div>
+<h2>Your Cart</h2>
+<ul id="cartList"></ul>
 
-<div class="cart-box">
-  <div id="items"></div>
+<button onclick="goCheckout()">Checkout</button>
 
-  <div class="total">
-    Total: ₹<span id="total">0</span>
-  </div>
-
-  <button class="btn" onclick="checkout()">Proceed to Checkout</button>
-</div>
-
-<script>
-const cart = JSON.parse(localStorage.getItem("cart"));
-
-if(!cart || cart.total <= 0){
-  document.getElementById("items").innerHTML = "<p>Cart is empty</p>";
-  document.getElementById("total").innerText = 0;
-}else{
-  document.getElementById("items").innerHTML = "<p>Items added successfully</p>";
-  document.getElementById("total").innerText = cart.total;
-}
-
-function checkout(){
-  if(!cart || cart.total <= 0){
-    alert("Cart is empty");
-    return;
-  }
-  window.location.href="checkout.html";
-}
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
